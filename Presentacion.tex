@@ -23,16 +23,16 @@
 
 \definecolor{darkblue}{RGB}{51,51,179}
 
-\title[Control de Acuarios]{Control de Acuarios con la CIAA}
-\author[Patricio Bos]{\includegraphics[width=6cm]{./imagenes/acuario2}}
-\institute[LSE-FIUBA]{Laboratorio de Sistemas Embebidos - FIUBA\\ Ing. Patricio Bos}
-\date{}
+\title[802.15.4 LR-WPAN]{Protocolos y Comunicaciones: 802.15.4 LR-WPAN}
+\author[Patricio Bos, Juan Montilla]{\includegraphics[width=6cm]{./imagenes/acuario2}}
+\institute[LSE-FIUBA]{Laboratorio de Sistemas Embebidos - FIUBA\\ Ing. Patricio Bos\\Esp. Ing. Juan Montilla}
+\date{01/06/16}
 
 %\subtitle{Framework para aplicaciones de control de ambientes}
 %\titlegraphic{\includegraphics[width=5cm]{./imagenes/acuario2}}
 
 
-\subject{Presentación del trabajo final de la Especialización en Sistemas Embebidos}
+\subject{Protocolos y Comunicaciones: 802.15.4 LR-WPAN. Carrera de Especialización en Sistemas Embebidos}
 % This is only inserted into the PDF information catalog. Can be left
 % out. 
 
@@ -69,21 +69,16 @@
 %
 %
 
-\section{Motivación}
+\section{WPAN}
 
-\begin{frame}{\textbf{¿Qué es un Acuario?}}
+\begin{frame}{\textbf{Componentes y Topología}}
 \fontsize{14pt}{15}\selectfont
 \begin{minipage}[c]{1.0\linewidth}
 \begin{minipage}[c]{0.6\linewidth}
 	\begin{itemize}
-		\item Ecosistema vivo y dinámico 
-		% Recreación de un ambiente subacuático para albergar peces, invertebrados y plantas
+		\item Full-function device (FFD): Capaz de ser PAN coordinator o coordinator. 
 		\vspace{10px}
-		\item Interacciones complejas
-		\vspace{10px}
-		\item Uso recreativo o comercial
-		\vspace{10px}
-		\item Malas condiciones = \$
+		\item Reduced-function device (RFD): Puede ser implementado usando los mínimos recursos y capacidad de memoria.
 		\vspace{10px}
   	\end{itemize}	
   \end{minipage}
@@ -95,13 +90,43 @@
 \end{minipage}
 \end{frame}
 
-\begin{frame}{\textbf{Nemo así como lo ven...}}
-\begin{align*}
-	{\includegraphics[width=1\textwidth]{./imagenes/nemo.jpg}}
-\end{align*}
-
-
+\begin{frame}{\textbf{Alternativa: Árbol de Cluster}}
+\fontsize{14pt}{15}\selectfont
+\begin{minipage}[c]{1.0\linewidth}
+\begin{minipage}[c]{0.6\linewidth}
+	\begin{itemize}
+		\item Área de cobertura vs Latencia del mensaje 
+		\vspace{10px}
+  	\end{itemize}	
+  \end{minipage}
+  \begin{minipage}[c]{0.35\linewidth}
+	\begin{figure}[H]
+		{\includegraphics[width=1\textwidth]{./imagenes/acuario.jpg}}
+	\end{figure}	  	  	
+  \end{minipage}
+\end{minipage}
 \end{frame}
+
+\begin{frame}{\textbf{Arquitectura del estándar}}
+
+\fontsize{14pt}{15}\selectfont
+\begin{minipage}[c]{1.0\linewidth}
+\begin{minipage}[c]{0.6\linewidth}
+	\begin{itemize}
+		\item MAC Sublayer: Acceso al canal físico para todo tipo de transferencias (gestion de beacon y GTS, acceso al canal, validación de frame, ack, asociación y desasociación). 
+		\vspace{10px}
+		\item Physical Layer (PHY): Mecanismo de control del transceiver RF (Activación y Desactivación de RF, ED, LQI, selección de canal, CCA y transmisión y recepción de paquetes del canal físico). 
+		\vspace{10px}
+  	\end{itemize}	
+  \end{minipage}
+  \begin{minipage}[c]{0.35\linewidth}
+	\begin{figure}[H]
+		{\includegraphics[width=1\textwidth]{./imagenes/acuario.jpg}}
+	\end{figure}	  	  	
+  \end{minipage}
+\end{minipage}
+\end{frame}
+
 
 \section[Problema]{Planteo del problema a resolver}
 
