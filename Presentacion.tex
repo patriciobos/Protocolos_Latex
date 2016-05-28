@@ -18,8 +18,8 @@
 %\usetikzlibrary{shapes,arrows}
 \setbeamerfont{author}{size=\large}
 \setbeamerfont{institute}{size=\normalsize\bfseries}
-\setbeamerfont{title}{size=\fontsize{30}{36}\bfseries}
-\setbeamerfont{subtitle}{size=\Large\bfseries}
+\setbeamerfont{title}{size=\Large\bfseries}
+\setbeamerfont{subtitle}{size=\huge}
 
 \definecolor{darkblue}{RGB}{51,51,179}
 
@@ -30,7 +30,7 @@
 \date{01/06/2016}
 
 %\subtitle{Framework para aplicaciones de control de ambientes}
-%\titlegraphic{\includegraphics[width=5cm]{./imagenes/acuario2}}
+\titlegraphic{\includegraphics[width=5cm]{./imagenes/red.jpg}}
 
 
 \subject{Protocolos y Comunicaciones: 802.15.4 LR-WPAN. Carrera de Especialización en Sistemas Embebidos}
@@ -69,6 +69,58 @@
 %
 %
 %
+\section{Introducción}
+
+\begin{frame}{Grupos de trabajo IEEE} 
+
+\begin{minipage}[c]{1.0\linewidth}
+	\begin{minipage}[c]{0.6\linewidth}
+		\begin{itemize}
+			\item IEEE 802: Desarrollar estándares para redes de área local y metropolitana (LAN y MAN)
+			\begin{itemize}
+				\item IEEE 802.3: Ethernet
+				\item IEEE 802.11: Wi-fi
+				\item ...
+			\end{itemize}
+			\vspace{10px}
+			\item IEEE 802.15: Redes inalámbricas de área personal (WPAN)
+			\vspace{5px}
+			\begin{itemize}
+				\item IEEE 802.15.1: Bluetooth
+				\item IEEE 802.15.4: WPANs de baja tasa de transferencia de datos (LR-WPAN)
+			\end{itemize}
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}[c]{0.35\linewidth}
+		\begin{figure}[H]
+			\uncover<2>{\includegraphics[width=1\textwidth]{./imagenes/OSI_Model_v1.pdf}}
+			\label{OSI_model}
+			\caption{Modelo de capas OSI}
+		\end{figure}	  	  	
+	\end{minipage}
+\end{minipage}
+	
+\end{frame}
+
+\begin{frame}{IEEE 802.15.4: LR-WPAN}
+	\begin{itemize}
+		\item Versiones: 802.15.4:2003, 802.15.4:2006 y \textbf{802.15.4:2011}
+		\item Define:
+		\begin{itemize}
+			\item Nivel físico (PHY)
+			\item Control de acceso al medio (MAC)
+		\end{itemize}
+		\item Características:
+		\begin{itemize}
+			\item Comunicaciones simples de bajo costo. 
+			\item Bajas tasas de transferencia (throughput).
+			\item Para aplicaciones con limitaciones de potencia.
+			\item Confiabilidad en la transferencia de datos.
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+
 \section{WPAN}
 
 \begin{frame}{\textbf{Componentes y Topología}}
@@ -136,24 +188,31 @@
 
 \end{frame}
 
-\section{Estandar 802.15.4}
+\section{Estándar 802.15.4}
 
 
 \begin{frame}{\textbf{Transferencia de Datos}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Frame: (Dev -> Coord, con beacon)
-			\vspace{10px}
-	  	\end{itemize}	
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/dev-coord-beacon.jpg}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+%%\fontsize{14pt}{15}\selectfont
+%\begin{minipage}[c]{1.0\linewidth}
+%	\begin{minipage}[c]{0.6\linewidth}
+%		\begin{itemize}
+%			\item Frame: (Dev -> Coord, con beacon)
+%			\vspace{10px}
+%	  	\end{itemize}	
+%	\end{minipage}
+%	\begin{minipage}[c]{0.35\linewidth}
+%		\begin{figure}[H]
+%			\includegraphics[width=1\textwidth]{./imagenes/dev-coord-beacon.jpg}
+%		\end{figure}	  	  	
+%	\end{minipage}
+%\end{minipage}
+
+Frame: (Dev -> Coord, con beacon)
+\vspace{10px}
+
+\begin{figure}[H]
+			\includegraphics[height=.8\textheight]{./imagenes/dev-coord-beacon.jpg}
+		\end{figure}	 
 \end{frame}
 
 \begin{frame}{\textbf{Transferencia de Datos}}
@@ -322,56 +381,55 @@
 %\fontsize{14pt}{15}\selectfont
 \begin{minipage}[c]{1.0\linewidth}
 \begin{figure}[H]
-	\includegraphics[width=1\textwidth]{./imagenes/modulaciones.jpg}
+	\includegraphics[height=1\textheight]{./imagenes/modulaciones.jpg}
 		\end{figure}	
 \end{minipage}
 \end{frame}
 
 \section{TI2520}
+
 \begin{frame}{\textbf{Circuito de Aplicación Típico}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-\begin{figure}[H]
-	\includegraphics[width=1\textwidth]{./imagenes/applicationcircuit.jpg}
-		\end{figure}	
-\end{minipage}
+	
+	\begin{figure}[H]
+		\includegraphics[height=1\textheight]{./imagenes/applicationcircuit.jpg}
+	\end{figure}	
+
 \end{frame}
 
 \begin{frame}{\textbf{Diagrama Funcional}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-\begin{figure}[H]
-	\includegraphics[width=1\textwidth]{./imagenes/diagrama.jpg}
-		\end{figure}	
-\end{minipage}
+
+	\begin{figure}[H]
+		\includegraphics[height=1\textheight]{./imagenes/diagrama.jpg}
+	\end{figure}	
+
 \end{frame}
 
 \begin{frame}{\textbf{Tx FIFO}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-\begin{figure}[H]
-	\includegraphics[width=1\textwidth]{./imagenes/txfifo.jpg}
-		\end{figure}	
-\end{minipage}
+
+	\begin{figure}[H]
+		\includegraphics[height=1\textheight]{./imagenes/txfifo.jpg}
+	\end{figure}	
+
 \end{frame}
 
 \begin{frame}{\textbf{Filtering Algorithm}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-\begin{figure}[H]
-	\includegraphics[width=1\textwidth]{./imagenes/filtering.jpg}
-		\end{figure}	
-\end{minipage}
+
+	\begin{figure}[H]
+		\includegraphics[height=1\textheight]{./imagenes/filtering.jpg}
+	\end{figure}	
+
 \end{frame}
 
+
 \begin{frame}{\textbf{Matching Algorithm}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-\begin{figure}[H]
-	\includegraphics[width=1\textwidth]{./imagenes/matching.jpg}
-		\end{figure}	
-\end{minipage}
+
+	\begin{figure}[H]
+		\includegraphics[height=1\textheight]{./imagenes/matching.jpg}
+	\end{figure}	
+
 \end{frame}
+
+
 \section{Mote}
 
 %\section[Problema]{Planteo del problema a resolver}
