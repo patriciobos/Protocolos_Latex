@@ -314,7 +314,7 @@ Device $\rightarrow$ Coordinator, sin beacon
 
 \begin{frame}[t]{Transferencia de Datos}
 \vspace{0px}
-Coordinator. $\rightarrow$ Device, con beacon
+Coordinator $\rightarrow$ Device, con beacon
 \vspace{10px}
 	\begin{figure}[H]
 		\includegraphics[height=.71\textheight]{./imagenes/coord-dev-beacon.jpg}
@@ -323,7 +323,7 @@ Coordinator. $\rightarrow$ Device, con beacon
 
 \begin{frame}[t]{Transferencia de Datos}
 \vspace{0px}
-Coordinator. $\rightarrow$ Device, sin beacon
+Coordinator $\rightarrow$ Device, sin beacon
 \vspace{10px}
 	\begin{figure}[H]
 		\includegraphics[height=.5\textheight]{./imagenes/coord-dev-sinbeacon.jpg}
@@ -369,46 +369,31 @@ Tipo de Frame: \textbf{MAC Command}
 \end{frame}
 
 
-\begin{frame}{\textbf{Transferencia de Datos}}
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Frame Control Field
-			\vspace{10px}
-	  	\end{itemize}	
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/FCF.jpg}
-		\end{figure}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/addressingmode.jpg}
-		\end{figure}	
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/frametype.jpg}
-		\end{figure}		  	  	
-	\end{minipage}
-\end{minipage}
+\begin{frame}[t]{Tramas}
+Frame Control Field
+	\begin{figure}[H]
+	\centering
+		\includegraphics[height=.3\textheight]{./imagenes/FCF.jpg}\\
+		\vspace{20px}
+		\includegraphics[height=.3\textheight]{./imagenes/frametype.jpg}
+		\hspace{20px} 
+		\includegraphics[height=.3\textheight]{./imagenes/addressingmode.jpg}
+	\end{figure} 	
 \end{frame}
 
-\begin{frame}{\textbf{Control de Acceso al Medio}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Slotted CSMA/CA vs Unslotted CSMA/CA
-			\vspace{10px}
-	  	\end{itemize}	
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%@JUAN: ESTO NO SE CÓMO LO VAMOS A EXPLICAR!!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[T]{Control de Acceso al Medio}
+
+Slotted CSMA/CA vs Unslotted CSMA/CA
+\vspace{10px}
 		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/superframe.jpg}
+			\includegraphics[height=.4\textheight]{./imagenes/superframe.jpg}\\
+			\vspace{15px}
+			\includegraphics[height=.3\textheight]{./imagenes/unsolotted.jpg}
 		\end{figure}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/unsolotted.jpg}
-		\end{figure}		  	  	
-	\end{minipage}
-\end{minipage}
 \end{frame}
 
 \begin{frame}{\textbf{Modulación}}
