@@ -26,7 +26,7 @@
 \title[802.15.4 LR-WPAN]{Protocolos de Comunicación en Sistemas Embebidos}
 \subtitle{802.15.4 LR-WPAN}
 \author[]{Ing. Patricio Bos, Esp. Ing. Juan Montilla}
-\institute[LSE-FIUBA]{Laboratorio de Sistemas Embebidos - FIUBA}
+\institute[CESE-FIUBA]{Carrera de Especialización en Sistemas Embebidos - FIUBA}
 \date{01/06/2016}
 
 %\subtitle{Framework para aplicaciones de control de ambientes}
@@ -95,70 +95,134 @@
 		\begin{figure}[H]
 			\uncover<2>{\includegraphics[width=1\textwidth]{./imagenes/OSI_Model_v1.pdf}}
 			\label{OSI_model}
-			\caption{Modelo de capas OSI}
+			%\caption{Modelo de capas OSI}
 		\end{figure}	  	  	
 	\end{minipage}
 \end{minipage}
 	
 \end{frame}
 
-\begin{frame}{IEEE 802.15.4: LR-WPAN}
+\begin{frame}{IEEE 802.15.4}{LR-WPAN}
 	\begin{itemize}
 		\item Versiones: 802.15.4:2003, 802.15.4:2006 y \textbf{802.15.4:2011}
+		\vspace{5px}
 		\item Define:
 		\begin{itemize}
 			\item Nivel físico (PHY)
 			\item Control de acceso al medio (MAC)
 		\end{itemize}
+		\vspace{5px}
 		\item Características:
 		\begin{itemize}
 			\item Comunicaciones simples de bajo costo. 
 			\item Bajas tasas de transferencia (throughput).
 			\item Para aplicaciones con limitaciones de potencia.
 			\item Confiabilidad en la transferencia de datos.
+			\item Opera en una banda de frecuencia sin licencia.
 		\end{itemize}
 	\end{itemize}
 	
 \end{frame}
 
-\section{WPAN}
+\begin{frame}{IEEE 802.15.4}{Características Generales}
+	
+	\begin{itemize}
+		\item Área de operación: 10m
+		\vspace{5px}
+		\item Tasa de transferencia: 250kbs
+		\vspace{5px}
+		\item Adecuación a aplicaciones de tiempo real: \textit{Guaranteed Time Slots} (GTSs)
+		\vspace{5px}
+		\item Mecanismo para evitar colisiones:\\ \textit{Carrier Sense Multiple-Access / Collision Avoidance} (CSMA/CA)
+		\vspace{5px}
+		\item Control de consumo de energía: 
+		\begin{itemize}
+			\item \textit{Link Quality Indicator} (LQI)
+			\item \textit{Energy Detection} (ED)
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
 
-\begin{frame}{\textbf{Componentes y Topología}}
-%\fontsize{14pt}{15}\selectfont  % para agrandar la letra sacar el primer "%"
+
+\section{WPANs}
+
+\begin{frame}{Componentes}{Tipos de dispositivos}
 % El primer minipage es un marco para las otras dos, que parten la pantalla en dos horizontalmente.
 % Con 0.6\linewidth le indicás que porcentaje del ancho de la página debe tener la minipage
 \begin{minipage}[c]{1.0\linewidth}
-
-	\begin{minipage}[c]{0.6\linewidth}
+	\begin{minipage}[c]{0.5\linewidth}
 		\begin{itemize}
-			\item Full-function device (FFD): Capaz de ser PAN coordinator o coordinator. 
+			\item Full-function device (FFD):\\ Capaz de ser PAN coordinator o coordinator. 
 			\vspace{10px}
-			\item Reduced-function device (RFD): Puede ser implementado usando los mínimos recursos y capacidad de memoria.
-			\vspace{10px}
+			\item Reduced-function device (RFD):\\ Puede ser implementado usando los mínimos recursos y capacidad de memoria.
+			%\vspace{10px}
 	  	\end{itemize}	
-	\end{minipage}
-
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-		%{\includegraphics[width=1\textwidth]{./imagenes/acuario.jpg}}
-		\end{figure}	  	  	
-	\end{minipage}
-
+	\end{minipage}	
+	\begin{minipage}[c]{0.5\linewidth}
+		\begin{figure}
+			\begin{align*} 
+				{\includegraphics[width=.3\textwidth]{./imagenes/FFD}}
+				\hspace{15px} 
+				{\includegraphics[width=.35\textwidth]{./imagenes/RFD}}
+				\end{align*}\\
+				\vspace{15px}
+				{\includegraphics[width=.6\textwidth]{./imagenes/FFDvsRFD}}
+			
+		\end{figure}	  	  	  	
+	\end{minipage}	
 \end{minipage}
 \end{frame}
 
-\begin{frame}{\textbf{Alternativa: Árbol de Cluster}}
-%\fontsize{14pt}{15}\selectfont
+\begin{frame}{Topología de la Red}{Estrella o punto a punto}
+
 \begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
+	\begin{minipage}[c]{0.45\linewidth}
 		\begin{itemize}
-			\item Área de cobertura vs Latencia del mensaje 
+			\item Estrella (Star)
+			\begin{itemize}
+				\item PAN coordinator.
+				\item Comunicaciones centralizadas.
+				\item Ej: Automatización del hogar, Periféricos de PC, Juegos,...
+					\end{itemize}
 			\vspace{10px}
+			\item Punto a punto (Peer-to-Peer)
+			\begin{itemize}
+				\item PAN coorditator.
+				\item Permite redes más complejas.
+				\item Multi-Hop routing.
+				\item Ej: Control industrial,  WSNs, Tracking de inventario,...
+			\end{itemize}
 	  	\end{itemize}	
 	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
+	\hspace{-20px}
+	\begin{minipage}[c]{0.7\linewidth}
 		\begin{figure}[H]
-			%{\includegraphics[width=1\textwidth]{./imagenes/acuario.jpg}}
+			{\includegraphics[width=.7\textwidth]{./imagenes/Topology}}
+		\end{figure}	  	  	
+	\end{minipage}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Topología Punto a punto}{Árbol de Cluster}
+\begin{minipage}[c]{1.0\linewidth}
+\begin{minipage}[c]{0.4\linewidth}
+		\begin{itemize}
+			\item Mayoría de FFDs.
+			\vspace{5px}
+			\item 1 \textit{overall PAN coordinator}.
+			\vspace{5px}
+			\item RFDs al final de una rama.
+			\vspace{5px}
+			\item Aumenta el área de covertura.
+			\vspace{5px}
+			\item Aumenta la latencia de la red.
+		\end{itemize}	
+	\end{minipage}
+	\hspace{-15px}
+	\begin{minipage}[c]{0.65\linewidth}
+		\begin{figure}[H]
+			{\includegraphics[width=.8\textwidth]{./imagenes/cluster}}
 		\end{figure}	  	  	
 	\end{minipage}
 \end{minipage}
@@ -538,99 +602,6 @@ Frame: (Dev -> Coord, con beacon)
 %
 %
 %
-%\section[Gestión]{Gestión de proyecto}
-%\subsection[Interesados]{Identificación de los Interesados}
-%
-%\begin{frame}{\textbf{Identificación de los interesados}}
-%\fontsize{12pt}{15}\selectfont
-%\begin{itemize}
-%		\item \textbf{Cliente:} Dr. Ing. Ariel Lutemberg, director de la Carrera de Esp. en Sistemas Embebidos.
-%		\vspace{2px}
-%		\item \textbf{Sponsors:} LSE, Facultad de Ingeniería, UBA.
-%		\vspace{2px}
-%		\item \textbf{End Users:} Particulares / Tiendas / Productores.
-%		\vspace{2px}
-%		\item \textbf{Champion:} Dr. Ing. Ariel Lutemberg, Coordinador Proyecto CIAA.
-%		\vspace{2px}
-%		\item \textbf{Drivers:} Carolina González, Esteban de Mateo.
-%		\vspace{2px}
-%		\item \textbf{Supporters} Ing. Alejandro Celery
-%		\vspace{2px}
-%		\item \textbf{Project Manager:} Ing. Patricio Bos
-%		\vspace{2px}
-%		\item \textbf{Team Members:} Ing. Nicolás Moretti
-%	\end{itemize}
-%\end{frame}
-%
-%\subsection[Scope]{Project Scope Statement}
-%
-%\begin{frame}{\textbf{Project Scope Statement}}
-%\fontsize{14pt}{15}\selectfont
-%\begin{itemize}
-%\item \textbf{Objetivo:} Desarrollar un software que permita usar la CIAA como controlador de acuario.
-%\vspace{5px}
-%\item \textbf{Alcance:} Se limitan la cantidad de sensores, actuadores y alarmas.
-%\vspace{5px}
-%\item \textbf{Criterio de aceptación:} Visualizar en una interfaz web el estado del sistema y poder operar el conjunto de actuadores desde la misma interfaz.
-%\vspace{5px}
-%\item \textbf{Restricciones:} Finalizar el projecto antes del 15 de Diciembre de 2015.
-%\end{itemize}
-%\end{frame}
-%
-%\subsection[WBS]{Work Breakdown Structure}
-%
-%\begin{frame}{\textbf{WBS} Desglose de tareas}
-%\fontsize{14pt}{15}\selectfont
-%	\begin{enumerate}
-%		\item Gestión del projecto
-%		\vspace{10px}
-%		\item Hardware
-%		\vspace{10px}
-%		\item Firmware
-%		\vspace{10px}
-%		\item Interfaz web
-%		\vspace{10px}
-%		\item Verificación y Validación
-%		\vspace{10px}
-%	\end{enumerate}
-%\end{frame}
-
-
-%\begin{frame}{\textbf{Activity on Node}}
-%\fontsize{14pt}{15}\selectfont
-%	\begin{figure}[H]
-%	  	\includegraphics[width=1\textwidth]{./imagenes/AoN.pdf}
-%	\end{figure}	  
-%\end{frame}
-%
-%\subsection[Calidad]{Gestión de Calidad}
-%
-%\begin{frame}{\textbf{Gestión de Calidad}}
-%\fontsize{14pt}{15}\selectfont
-%	\begin{figure}[H]
-%	  	\includegraphics[width=1\textwidth]{./imagenes/tabla-calidad.pdf}
-%	\end{figure}	  
-%\end{frame}
-%
-%\subsection[Recursos]{Gestión de Recursos}
-%
-%\begin{frame}{\textbf{Gestión de Recursos y Costos}}
-%\fontsize{14pt}{15}\selectfont
-%	\begin{figure}[H]
-%	  	\includegraphics[width=1\textwidth]{./imagenes/tabla-recursos.pdf}\vspace{10px}
-%	  	\includegraphics[width=.6\textwidth]{./imagenes/tabla-presupuesto.pdf}
-%	\end{figure}	  
-%
-%\end{frame}
-%
-%\subsection[Riesgos]{Gestión de Riesgos}
-%
-%\begin{frame}{\textbf{Gestión de Riesgos}}
-%\fontsize{14pt}{15}\selectfont
-%	\begin{figure}[H]
-%	  	\includegraphics[width=1\textwidth]{./imagenes/tabla-riesgo.pdf}
-%	\end{figure}	  
-%\end{frame}
 
 
 \begingroup
