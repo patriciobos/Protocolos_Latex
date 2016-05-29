@@ -68,8 +68,17 @@
 \end{frame}
 %
 %
-%
+
+%-------------------------------------------------%
+%-------------------------------------------------%
 \section{Introducción}
+%-------------------------------------------------%
+%-------------------------------------------------%
+
+%-------------------------------------------------%
+\subsection[IEEE 802]{Grupo de trabajo IEEE 802}
+%-------------------------------------------------%
+
 
 \begin{frame}{Grupos de trabajo IEEE} 
 
@@ -101,6 +110,10 @@
 \end{minipage}
 	
 \end{frame}
+
+%-------------------------------------------------%
+\subsection[IEEE 802.15.4]{IEEE 802.15.4 LR-WPAN}
+%-------------------------------------------------%
 
 \begin{frame}{IEEE 802.15.4}{LR-WPAN}
 	\begin{itemize}
@@ -145,7 +158,15 @@
 \end{frame}
 
 
+%-------------------------------------------------%
+%-------------------------------------------------%
 \section{WPANs}
+%-------------------------------------------------%
+%-------------------------------------------------%
+
+%-------------------------------------------------%
+\subsection[Dispositivos]{Tipos de Dispositivos}
+%-------------------------------------------------%
 
 \begin{frame}{Componentes}{Tipos de dispositivos}
 % El primer minipage es un marco para las otras dos, que parten la pantalla en dos horizontalmente.
@@ -173,6 +194,10 @@
 	\end{minipage}	
 \end{minipage}
 \end{frame}
+
+%-------------------------------------------------%
+\subsection[Topología]{Topología de la red}
+%-------------------------------------------------%
 
 \begin{frame}{Topología de la Red}{Estrella o punto a punto}
 
@@ -206,16 +231,16 @@
 
 \begin{frame}{Topología Punto a punto}{Árbol de Cluster}
 \begin{minipage}[c]{1.0\linewidth}
-\begin{minipage}[c]{0.4\linewidth}
+\begin{minipage}[c]{0.45\linewidth}
 		\begin{itemize}
 			\item Mayoría de FFDs.
-			\vspace{5px}
+			\vspace{10px}
 			\item 1 \textit{overall PAN coordinator}.
-			\vspace{5px}
+			\vspace{10px}
 			\item RFDs al final de una rama.
-			\vspace{5px}
+			\vspace{10px}
 			\item Aumenta el área de covertura.
-			\vspace{5px}
+			\vspace{10px}
 			\item Aumenta la latencia de la red.
 		\end{itemize}	
 	\end{minipage}
@@ -228,178 +253,123 @@
 \end{minipage}
 \end{frame}
 
+%-------------------------------------------------%
+\subsection[Arquitectura]{Arquitectura del estándar}
+%-------------------------------------------------%
 
-\begin{frame}{\textbf{Arquitectura del estándar}}
+\begin{frame}{Arquitectura del estándar}
 
-%\fontsize{14pt}{15}\selectfont
 \begin{minipage}[c]{1.0\linewidth}
-	
 	\begin{minipage}[c]{0.6\linewidth}
 		\begin{itemize}
-			\item MAC Sublayer: Acceso al canal físico para todo tipo de transferencias (gestion de beacon y GTS, acceso al canal, validación de frame, ack, asociación y desasociación). 
+			\item MAC Sublayer
+			\begin{itemize}
+				\item Beacon management
+				\item Channel access
+				\item GTSs management
+				\item Frame validation, ACKs
+				\item Asociación y desasociación de dispositivos
+			\end{itemize}
 			\vspace{10px}
-			\item Physical Layer (PHY): Mecanismo de control del transceiver RF (Activación y Desactivación de RF, ED, LQI, selección de canal, CCA y transmisión y recepción de paquetes del canal físico). 
+			\item Physical Layer (PHY):
+			\begin{itemize}
+				\item Activación/Desactivación de RF
+				\item ED, LQI, Clear Channel Assessment (CCA)
+				\item Channel selection
+				\item Tx y Rx de paquetes a través del medio físico
+			\end{itemize}
 			\vspace{10px}
-	  	\end{itemize}	
+		\end{itemize}	
 	  \end{minipage}
-
 	  \begin{minipage}[c]{0.35\linewidth}
 		\begin{figure}[H]
-		%	{\includegraphics[width=1\textwidth]{./imagenes/acuario.jpg}}
+			{\includegraphics[width=.6\textwidth]{./imagenes/arquitectura}}
 		\end{figure}	  	  	
 	  \end{minipage}
-	\end{minipage}
+\end{minipage}
 
 \end{frame}
 
-\section{Estándar 802.15.4}
+%--------------------------------------------------------------------%
+\subsection[Transferencia de datos]{Modelo de Transferencia de datos}
+%--------------------------------------------------------------------%
 
-
-\begin{frame}{\textbf{Transferencia de Datos}}
-%%\fontsize{14pt}{15}\selectfont
-%\begin{minipage}[c]{1.0\linewidth}
-%	\begin{minipage}[c]{0.6\linewidth}
-%		\begin{itemize}
-%			\item Frame: (Dev -> Coord, con beacon)
-%			\vspace{10px}
-%	  	\end{itemize}	
-%	\end{minipage}
-%	\begin{minipage}[c]{0.35\linewidth}
-%		\begin{figure}[H]
-%			\includegraphics[width=1\textwidth]{./imagenes/dev-coord-beacon.jpg}
-%		\end{figure}	  	  	
-%	\end{minipage}
-%\end{minipage}
-
-Frame: (Dev -> Coord, con beacon)
+\begin{frame}[t]{Transferencia de Datos}
+\vspace{0px}
+Device $\rightarrow$ Coordinator, con beacon
 \vspace{10px}
-
-\begin{figure}[H]
-			\includegraphics[height=.8\textheight]{./imagenes/dev-coord-beacon.jpg}
-		\end{figure}	 
+	\begin{figure}[H]
+		\includegraphics[height=.7\textheight]{./imagenes/dev-coord-beacon.jpg}
+	\end{figure}	 
 \end{frame}
 
-\begin{frame}{\textbf{Transferencia de Datos}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Frame: (Dev -> Coord, sin beacon)
-			\vspace{10px}
-	  	\end{itemize}	
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/dev-coord-sinbeacon.jpg}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+\begin{frame}[t]{Transferencia de Datos}
+\vspace{0px}
+Device $\rightarrow$ Coordinator, sin beacon
+\vspace{10px}
+	\begin{figure}[H]
+		\includegraphics[scale=.21]{./imagenes/dev-coord-sinbeacon.jpg}
+	\end{figure}	  	  	
 \end{frame}
 
-\begin{frame}{\textbf{Transferencia de Datos}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Frame: (Coord -> Dev, con beacon)
-			\vspace{10px}
-	  	\end{itemize}	
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/coord-dev-beacon.jpg}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+\begin{frame}[t]{Transferencia de Datos}
+\vspace{0px}
+Coordinator. $\rightarrow$ Device, con beacon
+\vspace{10px}
+	\begin{figure}[H]
+		\includegraphics[height=.71\textheight]{./imagenes/coord-dev-beacon.jpg}
+	\end{figure}	  	  	
 \end{frame}
 
-\begin{frame}{\textbf{Transferencia de Datos}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Frame: (Coord -> Dev, sin beacon)
-			\vspace{10px}
-	  	\end{itemize}	
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/coord-dev-sinbeacon.jpg}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+\begin{frame}[t]{Transferencia de Datos}
+\vspace{0px}
+Coordinator. $\rightarrow$ Device, sin beacon
+\vspace{10px}
+	\begin{figure}[H]
+		\includegraphics[height=.5\textheight]{./imagenes/coord-dev-sinbeacon.jpg}
+	\end{figure}	  	  	
 \end{frame}
 
-\begin{frame}{\textbf{Transferencia de Datos}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Frame: Beancon
-			\vspace{10px}
-	  	\end{itemize}	
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/beacon.jpg}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+%--------------------------------------------------------------------%
+\subsection[Tramas]{Tipos de Tramas}
+%--------------------------------------------------------------------%
+
+\begin{frame}[t]{Tramas}
+Tipo de Frame: \textbf{Beacon}
+\vspace{10px}
+	\begin{figure}[H]
+		\includegraphics[width=1\textwidth]{./imagenes/beacon.jpg}
+	\end{figure}	  	  	
 \end{frame}
 
-\begin{frame}{\textbf{Transferencia de Datos}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Frame: Datos
-			\vspace{10px}
-	  	\end{itemize}	
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/data.jpg}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+\begin{frame}[t]{Tramas}
+Tipo de Frame: \textbf{Data}
+\vspace{10px}
+	\begin{figure}[H]
+		\includegraphics[width=1\textwidth]{./imagenes/data.jpg}
+	\end{figure}	  	  	
 \end{frame}
 
-\begin{frame}{\textbf{Transferencia de Datos}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Frame: Ack
-			\vspace{10px}
-	  	\end{itemize}	
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/ack.jpg}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+
+\begin{frame}[t]{Tramas}
+Tipo de Frame: \textbf{Acknowledgement} (Ack)
+\vspace{10px}
+	\begin{figure}[H]
+	\centering
+		\includegraphics[width=.8\textwidth]{./imagenes/ack.jpg}
+	\end{figure}	  	  	
 \end{frame}
 
-\begin{frame}{\textbf{Transferencia de Datos}}
-%\fontsize{14pt}{15}\selectfont
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Frame: MAC Command
-			\vspace{10px}
-	  	\end{itemize}	
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/maccommand.jpg}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+\begin{frame}[t]{Tramas}
+Tipo de Frame: \textbf{MAC Command}
+\vspace{10px}
+	\begin{figure}[H]
+		\includegraphics[width=1\textwidth]{./imagenes/maccommand.jpg}
+	\end{figure}	  	  	
 \end{frame}
 
+
 \begin{frame}{\textbf{Transferencia de Datos}}
-%\fontsize{14pt}{15}\selectfont
 \begin{minipage}[c]{1.0\linewidth}
 	\begin{minipage}[c]{0.6\linewidth}
 		\begin{itemize}
@@ -450,7 +420,11 @@ Frame: (Dev -> Coord, con beacon)
 \end{minipage}
 \end{frame}
 
+%-------------------------------------------------%
+%-------------------------------------------------%
 \section{TI2520}
+%-------------------------------------------------%
+%-------------------------------------------------%
 
 \begin{frame}{\textbf{Circuito de Aplicación Típico}}
 	
@@ -493,8 +467,12 @@ Frame: (Dev -> Coord, con beacon)
 
 \end{frame}
 
-
+%-------------------------------------------------%
+%-------------------------------------------------%
 \section{Mote}
+%-------------------------------------------------%
+%-------------------------------------------------%
+
 
 %\section[Problema]{Planteo del problema a resolver}
 %
