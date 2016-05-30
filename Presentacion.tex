@@ -11,9 +11,9 @@
 
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
-%\usepackage{times}
 \usepackage{tikz}
 \usepackage{textpos}
+\usepackage{hyperref}
 
 %\usetikzlibrary{shapes,arrows}
 \setbeamerfont{author}{size=\large}
@@ -27,7 +27,7 @@
 \subtitle{802.15.4 LR-WPAN}
 \author[]{Ing. Patricio Bos, Esp. Ing. Juan Montilla}
 \institute[CESE-FIUBA]{Carrera de Especialización en Sistemas Embebidos - FIUBA}
-\date{01/06/2016}
+\date{}
 
 %\subtitle{Framework para aplicaciones de control de ambientes}
 \titlegraphic{\includegraphics[width=5cm]{./imagenes/red.jpg}}
@@ -60,6 +60,7 @@
 
 \endgroup
 
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
 
 
 \begin{frame}{\textbf{Organización de la presentación}}
@@ -176,7 +177,7 @@
 		\begin{itemize}
 			\item Full-function device (FFD):\\ Capaz de ser PAN coordinator o coordinator. 
 			\vspace{10px}
-			\item Reduced-function device (RFD):\\ Puede ser implementado usando los mínimos recursos y capacidad de memoria.
+			\item Reduced-function device (RFD):\\ Sólo puede comunicarse con un FFD. Requerimientos mínimos de recursos.
 			%\vspace{10px}
 	  	\end{itemize}	
 	\end{minipage}	
@@ -290,49 +291,115 @@
 
 \end{frame}
 
+
+\begin{frame}[t]{MAC: Beacons, Supertramas y GTSs}
+\begin{minipage}[c]{1.0\linewidth}
+\begin{minipage}[c]{0.35\linewidth}
+		\begin{itemize}
+			\item 16 time slots.
+			\vspace{5px}
+			\item Contention Access Period (CAP)\\ \textbf{con CSMA/CA}.
+			\vspace{5px}
+			\item Contention Free Period (CFP) para los GTSs, \textbf{sin CSMA/CA}.
+			\vspace{5px}
+			\item Los GTSs son opcionales y reducen el CAP.
+			\vspace{5px}
+			\item Tiempo inactivo $\rightarrow$ modo bajo consumo.
+		\end{itemize}	
+	\end{minipage}
+%	\hspace{-5px}
+	\begin{minipage}[c]{0.65\linewidth}
+		\begin{figure}[H]
+			\includegraphics[width=1\linewidth]{./imagenes/superFrame}\\
+		\end{figure}	  	  	
+	\end{minipage}
+\end{minipage}
+%\vspace{10px}
+%	\begin{figure}[H]
+%		\includegraphics[height=.35\textheight]{./imagenes/superFrame}\\
+%	\end{figure}
+
+\end{frame}
+
 %--------------------------------------------------------------------%
 \subsection[Transferencia de datos]{Modelo de Transferencia de datos}
 %--------------------------------------------------------------------%
 
+
 \begin{frame}[t]{Transferencia de Datos}
-\vspace{0px}
-Device $\rightarrow$ Coordinator, con beacon
-\vspace{10px}
-	\begin{figure}[H]
-		\includegraphics[height=.7\textheight]{./imagenes/dev-coord-beacon.jpg}
-	\end{figure}	 
+\textbf{Con beacon}
+%\vspace{10px}
+\begin{columns}[t]
+	\begin{column}{.5\textwidth}
+		\begin{minipage}[t][0.7\textheight][s]{\columnwidth}
+			\begin{figure}[H]
+				\includegraphics[height=.65\textheight]{./imagenes/dev-coord-beacon.jpg}
+				\vfill
+				\vspace{10px}
+				\caption{Device $\rightarrow$ Coordinator}
+			\end{figure}
+		\end{minipage}
+	\end{column}
+	\begin{column}{.5\textwidth}
+		\begin{minipage}[t][0.7\textheight][s]{\columnwidth}
+			\begin{figure}[H]
+				\includegraphics[height=.7\textheight]{./imagenes/coord-dev-beacon.jpg}
+				\vfill
+				\caption{Coordinator $\rightarrow$ Device}
+			\end{figure}	 		
+		\end{minipage}
+	\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}[t]{Transferencia de Datos}
-\vspace{0px}
-Device $\rightarrow$ Coordinator, sin beacon
-\vspace{10px}
-	\begin{figure}[H]
-		\includegraphics[scale=.21]{./imagenes/dev-coord-sinbeacon.jpg}
-	\end{figure}	  	  	
+\textbf{Sin beacon}
+%\vspace{10px}
+\begin{columns}[t]
+	\begin{column}{.5\textwidth}
+		\begin{minipage}[t][0.7\textheight][s]{\columnwidth}
+			\begin{figure}[H]
+				\includegraphics[height=.45\textheight]{./imagenes/dev-coord-sinbeacon.jpg}
+				\vfill
+				\vspace{10px}
+				\caption{Device $\rightarrow$ Coordinator}
+			\end{figure}
+		\end{minipage}
+	\end{column}
+	\begin{column}{.5\textwidth}
+		\begin{minipage}[t][0.7\textheight][s]{\columnwidth}
+			\begin{figure}[H]
+				\includegraphics[height=.5\textheight]{./imagenes/coord-dev-sinbeacon.jpg}
+				\vfill
+				\caption{Coordinator $\rightarrow$ Device}
+			\end{figure}	 		
+		\end{minipage}
+	\end{column}
+\end{columns} 	  	
 \end{frame}
 
-\begin{frame}[t]{Transferencia de Datos}
-\vspace{0px}
-Coordinator $\rightarrow$ Device, con beacon
-\vspace{10px}
-	\begin{figure}[H]
-		\includegraphics[height=.71\textheight]{./imagenes/coord-dev-beacon.jpg}
-	\end{figure}	  	  	
-\end{frame}
-
-\begin{frame}[t]{Transferencia de Datos}
-\vspace{0px}
-Coordinator $\rightarrow$ Device, sin beacon
-\vspace{10px}
-	\begin{figure}[H]
-		\includegraphics[height=.5\textheight]{./imagenes/coord-dev-sinbeacon.jpg}
-	\end{figure}	  	  	
-\end{frame}
 
 %--------------------------------------------------------------------%
-\subsection[Tramas]{Tipos de Tramas}
+\subsection[Tramas]{Estructura de las Tramas}
 %--------------------------------------------------------------------%
+
+\begin{frame}{Estructura de las Tramas}
+Se definen 4 tipos de trama MAC:
+\vspace{5px}
+	\begin{itemize}
+		\item Beacon
+		\vspace{5px}
+		\item Data
+		\vspace{5px}
+		\item Acknowledge
+		\vspace{5px}
+		\item MAC Command
+		\vspace{5px}
+	\end{itemize}
+	\begin{figure}[H]
+		\includegraphics[width=1\textwidth]{./imagenes/frameStructure}
+	\end{figure}	 	
+\end{frame}
 
 \begin{frame}[t]{Tramas}
 Tipo de Frame: \textbf{Beacon}
@@ -427,10 +494,14 @@ Slotted CSMA/CA vs Unslotted CSMA/CA
 	\begin{minipage}[c]{0.6\linewidth}
 		\begin{itemize}
 			\item Nodo Mote desarrollado en el LSE-FIUBA
+			\vspace{15px}
 			\begin{itemize}
 				\item Placa LPC1343 con procesador ARM Cortex-M3 de 32 bits
+				\vspace{5px}
 				\item 32 KB de flash
+				\vspace{5px}
 				\item 8 KB de SRAM
+				\vspace{5px}
 				\item Frecuencia de reloj de 72 MHz
 			\end{itemize}
 			\vspace{10px}
@@ -656,23 +727,33 @@ Slotted CSMA/CA vs Unslotted CSMA/CA
 %
 
 
-\begingroup
-\makeatletter
-\setlength{\hoffset}{-.5\beamer@sidebarwidth}
-\makeatother
-\begin{frame}[plain,noframenumbering]
-\fontsize{18pt}{15}\selectfont
-\begin{center}
-	MUCHAS GRACIAS POR SU ATENCIÓN\\
-	\vspace{2cm}
-	¿PREGUNTAS?
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/red.jpg}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{center}
+\section{Referencias}
+
+\begin{frame}[t]{Referencias}
+\begin{itemize}
+	\item \href{http://ecee.colorado.edu/~liue/teaching/comm_standards/2015S_zigbee/802.15.4-2011.pdf}{Estándar IEEE 802.15.4:2011}
+	\item \href{http://www.ieee802.org/15/pub/TG4.html}{IEEE 802.15 - Task Group 4 - Home Page}
+	\item \href{	https://standards.ieee.org/about/get/802/802.15.html}{IEEE Get Program}
+\end{itemize}
 \end{frame}
-\endgroup
+
+%\begingroup
+%\makeatletter
+%\setlength{\hoffset}{-.5\beamer@sidebarwidth}
+%\makeatother
+%\begin{frame}[plain,noframenumbering]
+%\fontsize{18pt}{15}\selectfont
+%\begin{center}
+%	MUCHAS GRACIAS POR SU ATENCIÓN\\
+%	\vspace{2cm}
+%	¿PREGUNTAS?
+%	\begin{minipage}[c]{0.35\linewidth}
+%		\begin{figure}[H]
+%			\includegraphics[width=1\textwidth]{./imagenes/red.jpg}
+%		\end{figure}	  	  	
+%	\end{minipage}
+%\end{center}
+%\end{frame}
+%\endgroup
 
 \end{document}
