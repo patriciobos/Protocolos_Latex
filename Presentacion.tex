@@ -160,7 +160,7 @@
 
 %-------------------------------------------------%
 %-------------------------------------------------%
-\section{WPANs}
+\section{LR-WPAN}
 %-------------------------------------------------%
 %-------------------------------------------------%
 
@@ -384,6 +384,9 @@ Frame Control Field
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %@JUAN: ESTO NO SE CÓMO LO VAMOS A EXPLICAR!!!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------------------------------------------------%
+\subsection[CSMA]{CSMA}
+%--------------------------------------------------------------------%
 
 \begin{frame}[T]{Control de Acceso al Medio}
 
@@ -396,6 +399,10 @@ Slotted CSMA/CA vs Unslotted CSMA/CA
 		\end{figure}
 \end{frame}
 
+%--------------------------------------------------------------------%
+\subsection[Modulación]{Modulación}
+%--------------------------------------------------------------------%
+
 \begin{frame}{\textbf{Modulación}}
 %\fontsize{14pt}{15}\selectfont
 \begin{minipage}[c]{1.0\linewidth}
@@ -407,16 +414,104 @@ Slotted CSMA/CA vs Unslotted CSMA/CA
 
 %-------------------------------------------------%
 %-------------------------------------------------%
-\section{TI2520}
+\section{Mote LSE}
 %-------------------------------------------------%
 %-------------------------------------------------%
 
-\begin{frame}{\textbf{Circuito de Aplicación Típico}}
-	
+%-------------------------------------------------%
+\subsection[Mote]{Mote}
+%-------------------------------------------------%
+\begin{frame}{Nodo Mote LSE-FIUBA} 
+
+\begin{minipage}[c]{1.0\linewidth}
+	\begin{minipage}[c]{0.6\linewidth}
+		\begin{itemize}
+			\item Nodo Mote desarrollado en el LSE-FIUBA
+			\begin{itemize}
+				\item Placa LPC1343 con procesador ARM Cortex-M3 de 32 bits
+				\item 32 KB de flash
+				\item 8 KB de SRAM
+				\item Frecuencia de reloj de 72 MHz
+			\end{itemize}
+			\vspace{10px}
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}[c]{0.35\linewidth}
+		\begin{figure}[H]
+			\uncover<2>{\includegraphics[width=1\textwidth]{./imagenes/mote.jpg}}
+			\label{Mote LSE}
+			%\caption{Mote LSE}
+		\end{figure}	  	  	
+	\end{minipage}
+\end{minipage}
+\end{frame}
+
+%-------------------------------------------------%
+\subsection[TI CC2520]{TI CC2520}
+%-------------------------------------------------%
+\begin{frame}{Transceptor DSSS TI CC2520} 
+\begin{minipage}[c]{1.0\linewidth}
+	\begin{minipage}[c]{0.6\linewidth}
+		\begin{itemize}
+			\item 2394-2507 MHz	
+			\item VCO, LNA, PA y filtros On-chip	
+			\item 3 modos de potencia flexibles para consumo reducido
+			\item Muy bajo consumo de corriente
+			\begin{itemize}
+				\item RX: 18.5 - 22.3 mA.
+				\item TX: 25.8 - 33.6 mA.
+			\end{itemize}
+			\item Interfaz de usuario
+			\begin{itemize}
+				\item 4 SPI
+				\item 6 GPIO
+				\item Generador de interupciones
+				\item Control de respuestas automáticas a diferentes eventos
+				\item Modo de Packet Sniffer embebido
+			\end{itemize}
+			\vspace{10px}
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}[c]{0.35\linewidth}
+		\begin{figure}[H]
+			\uncover<2>{\includegraphics[width=1\textwidth]{./imagenes/cc2520.jpg}}
+			\label{cc2520}
+			%\caption{cc2520}
+		\end{figure}	  	  	
+	\end{minipage}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{\textbf{Circuito de Aplicación Típico}}	
 	\begin{figure}[H]
 		\includegraphics[height=1\textheight]{./imagenes/applicationcircuit.jpg}
 	\end{figure}	
+\end{frame}
 
+\begin{frame}{Soporte por Hardware a 802.15.4 MAC} 
+\begin{minipage}[c]{1.0\linewidth}
+	\begin{minipage}[c]{0.6\linewidth}
+		\begin{itemize}
+			\item Generador automático de preámbulo	
+			\item Inserción y detección de palabra de sincronización	
+			\item CRC-16 en el MAC payload
+			\item Frame Filtering
+			\item Ack automático
+			\item Clear Channle Assessment (CCA)
+			\item Energy detection / RSSI
+			\item Link Quality Indication (LQI)
+			\item Seguridad MAC automática (CTR, CBC-MAC,CCM)
+			\vspace{10px}
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}[c]{0.35\linewidth}
+		\begin{figure}[H]
+			\uncover<2>{\includegraphics[width=1\textwidth]{./imagenes/cc2520.jpg}}
+			\label{cc2520}
+			%\caption{cc2520}
+		\end{figure}	  	  	
+	\end{minipage}
+\end{minipage}
 \end{frame}
 
 \begin{frame}{\textbf{Diagrama Funcional}}
@@ -451,12 +546,6 @@ Slotted CSMA/CA vs Unslotted CSMA/CA
 	\end{figure}	
 
 \end{frame}
-
-%-------------------------------------------------%
-%-------------------------------------------------%
-\section{Mote}
-%-------------------------------------------------%
-%-------------------------------------------------%
 
 
 %\section[Problema]{Planteo del problema a resolver}
