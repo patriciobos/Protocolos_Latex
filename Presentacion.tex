@@ -14,6 +14,8 @@
 \usepackage{tikz}
 \usepackage{textpos}
 \usepackage{hyperref}
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
 
 %\usetikzlibrary{shapes,arrows}
 \setbeamerfont{author}{size=\large}
@@ -22,6 +24,7 @@
 \setbeamerfont{subtitle}{size=\huge}
 
 \definecolor{darkblue}{RGB}{51,51,179}
+\setbeamercolor{bgcolor}{fg=white,bg=darkblue}
 
 \title[802.15.4 LR-WPAN]{Protocolos de Comunicación en Sistemas Embebidos}
 \subtitle{802.15.4 LR-WPAN}
@@ -48,20 +51,59 @@
   
 \begin{document}
 
+%Captions sin el texto "Figure"
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
 %la magia del begingroup es para que titlepage quede centrada, sin eso queda
 %corrida en el ancho del sidebar
+%\begingroup
+%\makeatletter
+%\setlength{\hoffset}{-.5\beamer@sidebarwidth}
+%\makeatother
+%\begin{frame}[plain,noframenumbering]
+%  \titlepage
+%\end{frame}
+%
+%\endgroup
+
+
+%-------------------------------------------------%
+%-------------------------------------------------%
+% PORTADA
+%-------------------------------------------------%
+%-------------------------------------------------%
+
 \begingroup
 \makeatletter
 \setlength{\hoffset}{-.5\beamer@sidebarwidth}
 \makeatother
 \begin{frame}[plain,noframenumbering]
-  \titlepage
-\end{frame}
+\begin{center}
+%\vspace{5px}
+\hfill
+    \begin{beamercolorbox}[center,dp=3ex,ht=10.25ex, wd=1\linewidth]{bgcolor}
+        \Large\textbf{Protocolos de Comunicación en Sistemas Embebidos}\\
+        \huge\textbf{802.15.4 LR-WPAN}
+    \end{beamercolorbox}
+\hfill\hfill
+\\
+\vspace{5px}
+\textbf{Carrera de Especialización en Sistemas Embebidos - FIUBA}\\
+\vspace{10px}
+\texttt{Ing. Patricio Bos}\\
+\texttt{Esp. Ing. Juan Montilla}\\
 
+\vspace{20px}
+
+\begin{figure}[H]
+	\includegraphics[width=.3\textwidth]{./imagenes/red.jpg}
+\end{figure}	  	  	
+\end{center}
+\end{frame}
 \endgroup
 
-\setbeamertemplate{caption}{\raggedright\insertcaption\par}
-
+%-------------------------------------------------%
+%-------------------------------------------------%
 
 \begin{frame}{\textbf{Organización de la presentación}}
   \tableofcontents
@@ -99,17 +141,12 @@
 				\item IEEE 802.15.1: Bluetooth
 				\item IEEE 802.15.3: WPANs de alta tasa de transferencia de datos (HR-WPAN)			
 				\item IEEE 802.15.4: WPANs de baja tasa de transferencia de datos (LR-WPAN)
-%					\begin{itemize}
-%					\item Mercado Potencial
-%					\end{itemize}
 			\end{itemize}
 		\end{itemize}
 	\end{minipage}
 	\begin{minipage}[c]{0.35\linewidth}
 		\begin{figure}[H]
 			\includegraphics[width=1\textwidth]{./imagenes/OSI_Model_v1.pdf}
-			\label{OSI_model}
-			\caption{Modelo de capas OSI}
 		\end{figure}	  	  	
 	\end{minipage}
 \end{minipage}
@@ -142,7 +179,7 @@
 	
 \end{frame}
 
-\begin{frame}{IEEE 802.15.4}{Mercado}
+\begin{frame}{IEEE 802.15.4}{MERCADO}
 	\begin{itemize}
 		\item Uso doméstico e industrial.
 		\vspace{5px}
@@ -671,29 +708,41 @@ Frame Control Field
 	\vspace{5px}
 	\item<.-> \href{http://www.nxp.com/documents/user_manual/UM10375.pdf}{LPC1343 - User Manual}
 	\vspace{5px}
-	\item<.-> \href{http://www.ti.com/product/CC2520/technicaldocuments}{Texas Instrumente CC2520 -  Technical Documents}
+	\item<.-> \href{http://www.ti.com/product/CC2520/technicaldocuments}{Texas Instrument CC2520 -  Technical Documents}
 	\vspace{5px}
 	\item<.-> \href{http://www.ti.com/lit/an/swru120b/swru120b.pdf}{Texas Instrument Design Note - 2.4 GHz Inverted F Antenna}
 \end{itemize}
 \end{frame}
 
-%\begingroup
-%\makeatletter
-%\setlength{\hoffset}{-.5\beamer@sidebarwidth}
-%\makeatother
-%\begin{frame}[plain,noframenumbering]
-%\fontsize{18pt}{15}\selectfont
-%\begin{center}
-%	MUCHAS GRACIAS POR SU ATENCIÓN\\
-%	\vspace{2cm}
-%	¿PREGUNTAS?
-%	\begin{minipage}[c]{0.35\linewidth}
-%		\begin{figure}[H]
-%			\includegraphics[width=1\textwidth]{./imagenes/red.jpg}
-%		\end{figure}	  	  	
-%	\end{minipage}
-%\end{center}
-%\end{frame}
-%\endgroup
+%\section*{cartón de gracias}
+
+\begingroup
+\makeatletter
+\setlength{\hoffset}{-.5\beamer@sidebarwidth}
+\makeatother
+\begin{frame}[plain,noframenumbering]
+\begin{center}
+%\vspace{5px}
+\hfill
+    \begin{beamercolorbox}[center,dp=3ex,ht=10.25ex, wd=1\linewidth]{bgcolor}
+        \Large\textbf{Protocolos de Comunicación en Sistemas Embebidos}\\
+        \huge\textbf{802.15.4 LR-WPAN}
+    \end{beamercolorbox}
+\hfill\hfill
+\\
+\vspace{5px}
+\textbf{Carrera de Especialización en Sistemas Embebidos - FIUBA}\\
+\vspace{10px}
+\texttt{Ing. Patricio Bos: pbos@fi.uba.ar}\\
+\texttt{Esp. Ing. Juan Montilla: juanvmontillac@gmail.com}\\
+
+\vspace{20px}
+
+\begin{figure}[H]
+	\includegraphics[width=.3\textwidth]{./imagenes/red.jpg}
+\end{figure}	  	  	
+\end{center}
+\end{frame}
+\endgroup
 
 \end{document}
