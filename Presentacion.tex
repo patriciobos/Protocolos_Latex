@@ -179,7 +179,7 @@
 	
 \end{frame}
 
-\begin{frame}{IEEE 802.15.4}{MERCADO}
+\begin{frame}{IEEE 802.15.4}{Mercado}
 	\begin{itemize}
 		\item Uso doméstico e industrial.
 		\vspace{5px}
@@ -445,6 +445,24 @@
 
 
 %--------------------------------------------------------------------%
+\subsection[CSMA/CA]{CSMA/CA}
+%--------------------------------------------------------------------%
+
+\begin{frame}[T]{Carrier Sense multiple Access with Collision Avoidance}
+
+Slotted CSMA/CA vs Unslotted CSMA/CA
+
+\vspace{10px}
+
+		\begin{figure}[H]
+			\includegraphics[height=.8\textheight]{./imagenes/CSMA-CA}\\
+%			\vspace{15px}
+%			\includegraphics[height=.3\textheight]{./imagenes/unsolotted.jpg}
+		\end{figure}
+\end{frame}
+
+
+%--------------------------------------------------------------------%
 \subsection[Tramas]{Estructura de las Tramas}
 %--------------------------------------------------------------------%
 
@@ -462,7 +480,7 @@ Se definen 4 tipos de trama MAC:
 		\vspace{5px}
 	\end{itemize}
 	\begin{figure}[H]
-		\includegraphics[width=1\textwidth]{./imagenes/frameStructure}
+		\includegraphics[width=.8\textwidth]{./imagenes/frameStructure}
 	\end{figure}	 	
 \end{frame}
 
@@ -488,7 +506,7 @@ Tipo de Frame: \textbf{Acknowledgement} (Ack)
 \vspace{10px}
 	\begin{figure}[H]
 	\centering
-		\includegraphics[width=.8\textwidth]{./imagenes/ack.jpg}
+		\includegraphics[width=.7\textwidth]{./imagenes/ack.jpg}
 	\end{figure}	  	  	
 \end{frame}
 
@@ -513,21 +531,6 @@ Frame Control Field
 	\end{figure} 	
 \end{frame}
 
-
-%--------------------------------------------------------------------%
-\subsection[CSMA]{CSMA}
-%--------------------------------------------------------------------%
-
-\begin{frame}[T]{Control de Acceso al Medio}
-
-%Slotted CSMA/CA vs Unslotted CSMA/CA
-%\vspace{10px}
-%		\begin{figure}[H]
-%			\includegraphics[height=.4\textheight]{./imagenes/superframe.jpg}\\
-%			\vspace{15px}
-%			\includegraphics[height=.3\textheight]{./imagenes/unsolotted.jpg}
-%		\end{figure}
-\end{frame}
 
 %--------------------------------------------------------------------%
 \subsection[Modulación]{Modulación}
@@ -568,20 +571,33 @@ Frame Control Field
 				\vspace{5px}
 				\item 3 leds
 				\vspace{5px}
-				\item Antena y acople en microstrip
+				\item Antena y balun en microstrip
 			\end{itemize}
 			\vspace{10px}
 		\end{itemize}
 	\end{minipage}
 	\begin{minipage}[c]{0.35\linewidth}
 		\begin{figure}[H]
+			\vspace{35px}
 			\includegraphics[width=1\textwidth]{./imagenes/mote.jpg}
+			\\
+			\vspace{10px}
+			\includegraphics[width=1\textwidth]{./imagenes/motePCB}
 			\label{Mote LSE}
 			%\caption{Mote LSE}
 		\end{figure}	  	  	
 	\end{minipage}
 \end{minipage}
 \end{frame}
+
+
+\begin{frame}{Nodo Mote LSE-FIUBA}{Circuito Esquemático}
+	\begin{figure}[H]
+		\includegraphics[height=.95\textheight]{./imagenes/moteSchema}
+	\end{figure}	  	  	
+\end{frame}
+
+
 
 %-------------------------------------------------%
 \subsection[TI CC2520]{TI CC2520}
@@ -627,8 +643,8 @@ Frame Control Field
 \begin{minipage}[c]{1.0\linewidth}
 	\begin{minipage}[c]{0.70\linewidth}
 		\begin{itemize}
-%			\vspace{5px}
-%			\item Generador automático de preámbulo	
+			\vspace{5px}
+			\item Generador automático de preámbulo	
 			\vspace{5px}
 			\item Inserción y detección de palabra de sincronización	
 			\vspace{5px}
@@ -638,7 +654,7 @@ Frame Control Field
 			\vspace{5px}
 			\item Ack automático
 			\vspace{5px}
-			\item Clear Channle Assessment (CCA)
+			\item Clear Channel Assessment (CCA)
 			\vspace{5px}
 			\item Energy Detection (ED)
 			\vspace{5px}
@@ -667,22 +683,22 @@ Frame Control Field
 	\end{figure}	
 \end{frame}
 
-\begin{frame}{\textbf{Tx FIFO}}
+\begin{frame}{Procesamiento de tramas: Tx}
 	\begin{figure}[H]
-		\includegraphics[height=1\textheight]{./imagenes/txfifo.jpg}
+		\includegraphics[height=.95\textheight]{./imagenes/txfifo.jpg}
 	\end{figure}	
 \end{frame}
 
-\begin{frame}{\textbf{Filtering Algorithm}}
+\begin{frame}{Procesamiento de tramas: Rx filtering}
 	\begin{figure}[H]
-		\includegraphics[height=1\textheight]{./imagenes/filtering.jpg}
+		\includegraphics[height=.95\textheight]{./imagenes/filtering.jpg}
 	\end{figure}	
 \end{frame}
 
 
-\begin{frame}{\textbf{Matching Algorithm}}
+\begin{frame}{Procesamiento de tramas: Rx matching}
 	\begin{figure}[H]
-		\includegraphics[height=1\textheight]{./imagenes/matching.jpg}
+		\includegraphics[height=.95\textheight]{./imagenes/matching.jpg}
 	\end{figure}	
 \end{frame}
 
