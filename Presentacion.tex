@@ -99,17 +99,17 @@
 				\item IEEE 802.15.1: Bluetooth
 				\item IEEE 802.15.3: WPANs de alta tasa de transferencia de datos (HR-WPAN)			
 				\item IEEE 802.15.4: WPANs de baja tasa de transferencia de datos (LR-WPAN)
-					\begin{itemize}
-					\item Mercado Potencial
-					\end{itemize}
+%					\begin{itemize}
+%					\item Mercado Potencial
+%					\end{itemize}
 			\end{itemize}
 		\end{itemize}
 	\end{minipage}
 	\begin{minipage}[c]{0.35\linewidth}
 		\begin{figure}[H]
-			\uncover<2>{\includegraphics[width=1\textwidth]{./imagenes/OSI_Model_v1.pdf}}
+			\includegraphics[width=1\textwidth]{./imagenes/OSI_Model_v1.pdf}
 			\label{OSI_model}
-			%\caption{Modelo de capas OSI}
+			\caption{Modelo de capas OSI}
 		\end{figure}	  	  	
 	\end{minipage}
 \end{minipage}
@@ -419,7 +419,7 @@ Se definen 4 tipos de trama MAC:
 		\vspace{5px}
 		\item Data
 		\vspace{5px}
-		\item Acknowledge
+		\item Acknowledgement
 		\vspace{5px}
 		\item MAC Command
 		\vspace{5px}
@@ -476,30 +476,27 @@ Frame Control Field
 	\end{figure} 	
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%@JUAN: ESTO NO SE CÓMO LO VAMOS A EXPLICAR!!!
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %--------------------------------------------------------------------%
 \subsection[CSMA]{CSMA}
 %--------------------------------------------------------------------%
 
 \begin{frame}[T]{Control de Acceso al Medio}
 
-Slotted CSMA/CA vs Unslotted CSMA/CA
-\vspace{10px}
-		\begin{figure}[H]
-			\includegraphics[height=.4\textheight]{./imagenes/superframe.jpg}\\
-			\vspace{15px}
-			\includegraphics[height=.3\textheight]{./imagenes/unsolotted.jpg}
-		\end{figure}
+%Slotted CSMA/CA vs Unslotted CSMA/CA
+%\vspace{10px}
+%		\begin{figure}[H]
+%			\includegraphics[height=.4\textheight]{./imagenes/superframe.jpg}\\
+%			\vspace{15px}
+%			\includegraphics[height=.3\textheight]{./imagenes/unsolotted.jpg}
+%		\end{figure}
 \end{frame}
 
 %--------------------------------------------------------------------%
 \subsection[Modulación]{Modulación}
 %--------------------------------------------------------------------%
 
-\begin{frame}{\textbf{Modulación}}
-%\fontsize{14pt}{15}\selectfont
+\begin{frame}{Modulación}
 \begin{minipage}[c]{1.0\linewidth}
 \begin{figure}[H]
 	\includegraphics[height=1\textheight]{./imagenes/modulaciones.jpg}
@@ -524,20 +521,24 @@ Slotted CSMA/CA vs Unslotted CSMA/CA
 			\item Nodo Mote desarrollado en el LSE-FIUBA
 			\vspace{15px}
 			\begin{itemize}
-				\item Placa LPC1343 con procesador ARM Cortex-M3 de 32 bits
+				\item LPC1343 ARM Cortex-M3 @72MHz
 				\vspace{5px}
-				\item 32 KB de flash
+				\item Transceptor TI-2520
 				\vspace{5px}
-				\item 8 KB de SRAM
+				\item Extensor de rango TI-2591
 				\vspace{5px}
-				\item Frecuencia de reloj de 72 MHz
+				\item 3 Pulsadores
+				\vspace{5px}
+				\item 3 leds
+				\vspace{5px}
+				\item Antena y acople en microstrip
 			\end{itemize}
 			\vspace{10px}
 		\end{itemize}
 	\end{minipage}
 	\begin{minipage}[c]{0.35\linewidth}
 		\begin{figure}[H]
-			\uncover<2>{\includegraphics[width=1\textwidth]{./imagenes/mote.jpg}}
+			\includegraphics[width=1\textwidth]{./imagenes/mote.jpg}
 			\label{Mote LSE}
 			%\caption{Mote LSE}
 		\end{figure}	  	  	
@@ -550,30 +551,33 @@ Slotted CSMA/CA vs Unslotted CSMA/CA
 %-------------------------------------------------%
 \begin{frame}{Transceptor DSSS TI CC2520} 
 \begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
+	\begin{minipage}[c]{0.7\linewidth}
 		\begin{itemize}
+			\vspace{5px}
 			\item 2394-2507 MHz	
-			\item VCO, LNA, PA y filtros On-chip	
-			\item 3 modos de potencia flexibles para consumo reducido
+%			\item VCO, LNA, PA y filtros On-chip	
+%			\item 3 modos de potencia flexibles para consumo reducido
+			\vspace{10px}
 			\item Muy bajo consumo de corriente
 			\begin{itemize}
 				\item RX: 18.5 - 22.3 mA.
 				\item TX: 25.8 - 33.6 mA.
 			\end{itemize}
+			\vspace{10px}
 			\item Interfaz de usuario
 			\begin{itemize}
-				\item 4 SPI
-				\item 6 GPIO
-				\item Generador de interupciones
-				\item Control de respuestas automáticas a diferentes eventos
+				\item SPI
+				\item 6 GPIOs
+% 				\item Generador de interupciones
+				\item Respuestas automáticas a diferentes eventos
 				\item Modo de Packet Sniffer embebido
 			\end{itemize}
 			\vspace{10px}
 		\end{itemize}
 	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
+	\begin{minipage}[c]{0.25\linewidth}
 		\begin{figure}[H]
-			\uncover<2>{\includegraphics[width=1\textwidth]{./imagenes/cc2520.jpg}}
+			\includegraphics[width=1\textwidth]{./imagenes/cc2520.jpg}
 			\label{cc2520}
 			%\caption{cc2520}
 		\end{figure}	  	  	
@@ -581,187 +585,95 @@ Slotted CSMA/CA vs Unslotted CSMA/CA
 \end{minipage}
 \end{frame}
 
-\begin{frame}{\textbf{Circuito de Aplicación Típico}}	
+
+\begin{frame}{Soporte por Hardware a 802.15.4 MAC} 
+\begin{minipage}[c]{1.0\linewidth}
+	\begin{minipage}[c]{0.70\linewidth}
+		\begin{itemize}
+%			\vspace{5px}
+%			\item Generador automático de preámbulo	
+			\vspace{5px}
+			\item Inserción y detección de palabra de sincronización	
+			\vspace{5px}
+			\item CRC-16 en el MAC payload
+			\vspace{5px}
+			\item Frame Filtering
+			\vspace{5px}
+			\item Ack automático
+			\vspace{5px}
+			\item Clear Channle Assessment (CCA)
+			\vspace{5px}
+			\item Energy Detection (ED)
+			\vspace{5px}
+			\item Link Quality Indication (LQI)
+%			\vspace{5px}
+%			\item Seguridad MAC automática (CTR, CBC-MAC,CCM)
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}[c]{0.25\linewidth}
+		\begin{figure}[H]
+			\includegraphics[width=1\textwidth]{./imagenes/cc2520.jpg}
+		\end{figure}	  	  	
+	\end{minipage}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Circuito de Aplicación Típico}	
 	\begin{figure}[H]
 		\includegraphics[height=1\textheight]{./imagenes/applicationcircuit.jpg}
 	\end{figure}	
 \end{frame}
 
-\begin{frame}{Soporte por Hardware a 802.15.4 MAC} 
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Generador automático de preámbulo	
-			\item Inserción y detección de palabra de sincronización	
-			\item CRC-16 en el MAC payload
-			\item Frame Filtering
-			\item Ack automático
-			\item Clear Channle Assessment (CCA)
-			\item Energy detection / RSSI
-			\item Link Quality Indication (LQI)
-			\item Seguridad MAC automática (CTR, CBC-MAC,CCM)
-			\vspace{10px}
-		\end{itemize}
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\uncover<2>{\includegraphics[width=1\textwidth]{./imagenes/cc2520.jpg}}
-			\label{cc2520}
-			%\caption{cc2520}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
-\end{frame}
-
-\begin{frame}{\textbf{Diagrama Funcional}}
-
+\begin{frame}{Diagrama Funcional}
 	\begin{figure}[H]
 		\includegraphics[height=1\textheight]{./imagenes/diagrama.jpg}
 	\end{figure}	
-
 \end{frame}
 
 \begin{frame}{\textbf{Tx FIFO}}
-
 	\begin{figure}[H]
 		\includegraphics[height=1\textheight]{./imagenes/txfifo.jpg}
 	\end{figure}	
-
 \end{frame}
 
 \begin{frame}{\textbf{Filtering Algorithm}}
-
 	\begin{figure}[H]
 		\includegraphics[height=1\textheight]{./imagenes/filtering.jpg}
 	\end{figure}	
-
 \end{frame}
 
 
 \begin{frame}{\textbf{Matching Algorithm}}
-
 	\begin{figure}[H]
 		\includegraphics[height=1\textheight]{./imagenes/matching.jpg}
 	\end{figure}	
-
 \end{frame}
 
 
-%\section[Problema]{Planteo del problema a resolver}
-%
-%\begin{frame}{\textbf{Planteo del problema a resolver}}
-%\fontsize{18pt}{15}\selectfont
-%	\begin{itemize}
-%		\item {¿Qué hace falta medir?}
-%		\vspace{20px}
-%		\item ¿Qué hace falta controlar?
-%		\vspace{20px}
-%		\item ¿Sobre qué hace falta alertar?
-%		\vspace{10px}
-%	\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{\textbf{¿Qué hace falta medir? - Sensores}}
-%\fontsize{14pt}{15}\selectfont
-%
-%\begin{minipage}[c]{1.0\linewidth}
-%\begin{minipage}[c]{0.6\linewidth}
-%      \centering
-%      \begin{itemize}
-%      	\item Temperatura
-%		\vspace{10px}
-%		\item pH
-%		\vspace{10px}
-%		\item Nivel de agua
-%		\vspace{10px}
-%		\item otros
-%			\begin{itemize}
-%				\item Conductividad
-%				\item Nitratos
-%				\item etc...
-%			\end{itemize}
-%	\end{itemize}
-% \end{minipage}
-%  \begin{minipage}[c]{0.35\linewidth}
-%	\begin{figure}[H]
-%	%	{\includegraphics[width=1\textwidth]{./imagenes/sensor_temp}\vspace{5px}}
-%	%	{\includegraphics[width=1\textwidth]{./imagenes/sensor_nivel}}	
-%	\end{figure}	  	  	
-%  \end{minipage}
-%\end{minipage}
-%\end{frame}
-%	
-%
-%\begin{frame}{\textbf{¿Qué hace falta controlar? - Actuadores}}
-%\fontsize{14pt}{15}\selectfont
-%\begin{minipage}[c]{1.0\linewidth}
-%\begin{minipage}[c]{0.6\linewidth}
-%      \centering
-%	\begin{itemize}
-%		\item Inyección de $O_2$/$CO_2$
-%		\vspace{10px}
-%		\item Iluminación
-%		\vspace{10px}
-%		\item Recambio de agua
-%		\vspace{10px}
-%		\item Calentadores
-%		\vspace{10px}
-%		\item Otros
-%			\begin{itemize}
-%				\item Dosificadores de alimento/nutrientes
-%				\item Refrigeración
-%				\item etc...
-%			\end{itemize}
-%	\end{itemize}
-% \end{minipage}
-%  \begin{minipage}[c]{0.35\linewidth}
-%	\begin{figure}[H]
-%	%	{\includegraphics[width=1\textwidth]{./imagenes/actuador_pump}\vspace{5px}}
-%	%	{\includegraphics[width=1\textwidth]{./imagenes/actuador_heater}}	
-%	\end{figure}	  	  	
-%  \end{minipage}
-%\end{minipage}
-%\end{frame}
-%
-%\begin{frame}{\textbf{¿Sobre qué hace falta alertar? - Alarmas}}
-%\fontsize{14pt}{15}\selectfont
-%\begin{itemize}
-%	\item Aviso de tarea periódica de mantenimiento
-%	\vspace{10px}
-%	\item Nivel de agua bajo/alto en tanques auxiliares
-%	\vspace{10px}
-%	\item Parámetro fuera de rango
-%	\vspace{10px}
-%	\item Falla de sensor
-%	\vspace{10px}
-%	\item Otros	
-%\end{itemize}	
-%\end{frame}
-%
-%\begin{frame}{\textbf{Soluciones existentes}}
-%\fontsize{14pt}{15}\selectfont
-%\vspace{-10px}
-%	\begin{figure}
-%	\begin{align*} 
-%		{\includegraphics[width=.6\textwidth]{./imagenes/reefkeeper.JPG}}\\
-%		\vspace{15px}
-%		{\includegraphics[width=.6\textwidth]{./imagenes/arduino.jpg}}
-%	\end{align*}
-%	\end{figure}	  	  	
-%\end{frame}
-%%
-%
-%
-%
-
-
+%-------------------------------------------------%
+%-------------------------------------------------%
 \section{Referencias}
+%-------------------------------------------------%
+%-------------------------------------------------%
 
-\begin{frame}[t]{Referencias}
+\begin{frame}[c]{Referencias}
+
+%\Large{Referencias}
+\vspace{20px}
 \begin{itemize}
-	\item \href{http://ecee.colorado.edu/~liue/teaching/comm_standards/2015S_zigbee/802.15.4-2011.pdf}{Estándar IEEE 802.15.4:2011}
-	\item \href{http://www.ieee802.org/15/pub/TG4.html}{IEEE 802.15 - Task Group 4 - Home Page}
-	\item \href{	https://standards.ieee.org/about/get/802/802.15.html}{IEEE Get Program}
+	\item<.-> \href{http://ecee.colorado.edu/~liue/teaching/comm_standards/2015S_zigbee/802.15.4-2011.pdf}{Estándar IEEE 802.15.4:2011}
+	\vspace{5px}	
+	\item<.-> \href{http://www.ieee802.org/15/pub/TG4.html}{IEEE 802.15 - Task Group 4 - Home Page}
+	\vspace{5px}
+	\item<.-> \href{	https://standards.ieee.org/about/get/802/802.15.html}{IEEE Get Program}
+	\vspace{5px}
+	\item<.-> \href{http://www.nxp.com/documents/data_sheet/LPC1311_13_42_43.pdf}{LPC1343 - Datasheet}
+	\vspace{5px}
+	\item<.-> \href{http://www.nxp.com/documents/user_manual/UM10375.pdf}{LPC1343 - User Manual}
+	\vspace{5px}
+	\item<.-> \href{http://www.ti.com/product/CC2520/technicaldocuments}{Texas Instrumente CC2520 -  Technical Documents}
+	\vspace{5px}
+	\item<.-> \href{http://www.ti.com/lit/an/swru120b/swru120b.pdf}{Texas Instrument Design Note - 2.4 GHz Inverted F Antenna}
 \end{itemize}
 \end{frame}
 
