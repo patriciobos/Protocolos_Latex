@@ -27,7 +27,7 @@
 \setbeamercolor{bgcolor}{fg=white,bg=darkblue}
 
 \title[802.15.4 LR-WPAN]{Protocolos de Comunicación en Sistemas Embebidos}
-\subtitle{802.15.4 LR-WPAN}
+\subtitle{Práctica 802.15.4 LR-WPAN}
 \author[]{Ing. Patricio Bos, Esp. Ing. Juan Montilla}
 \institute[CESE-FIUBA]{Carrera de Especialización en Sistemas Embebidos - FIUBA}
 \date{}
@@ -83,7 +83,7 @@
 \hfill
     \begin{beamercolorbox}[center,dp=3ex,ht=10.25ex, wd=1\linewidth]{bgcolor}
         \Large\textbf{Protocolos de Comunicación en Sistemas Embebidos}\\
-        \huge\textbf{802.15.4 LR-WPAN}
+        \huge\textbf{Práctica 802.15.4 LR-WPAN}
     \end{beamercolorbox}
 \hfill\hfill
 \\
@@ -99,7 +99,7 @@
 	\includegraphics[width=.3\textwidth]{./imagenes/red.jpg}
 \end{figure}	  	  	
 \vspace{5px}
-\tiny versión: 2016-06-01 rev 1.0 
+\tiny versión: 2016-06-06 rev 1.0 
 
 \end{center}
 \end{frame}
@@ -108,7 +108,7 @@
 %-------------------------------------------------%
 %-------------------------------------------------%
 
-\begin{frame}{\textbf{Organización de la presentación}}
+\begin{frame}{\textbf{Organización de la práctica}}
   \tableofcontents
   % You might wish to add the option [pausesections]
 \end{frame}
@@ -118,7 +118,7 @@
 %
 %-------------------------------------------------%
 %-------------------------------------------------%
-\section{Práctica de Laboratorio 802.15.4}
+\section{Práctica 802.15.4 LR-WPAN}
 %-------------------------------------------------%
 %-------------------------------------------------%
 
@@ -132,7 +132,7 @@
     \begin{column}{.5\textwidth}
         \begin{minipage}[t][0.7\textheight][s]{\columnwidth}
             \begin{itemize}
-            \item Disponer una topología de tipo Estrella:
+            \item Se dispone de una topología de tipo Estrella:
             \begin{itemize}
                 \item Un Mote como coordinador.
                 \item El resto como device.
@@ -192,12 +192,12 @@
 %-------------------------------------------------%
 \begin{frame}[t]{Ejercicio 3: P2P + Verificación de trama}{Comunicación sencilla con verificación de trama}
     \begin{itemize}
-        \item Verificar el contenido de la trama recibida.
+        \item Partiendo de la comunicación establecida en el Ejercicio 2, verificar el contenido de la trama recibida:
         \vspace{5px}
             \begin{itemize}
-            \item Verificar direccionamiento: La dirección de destino de la trama debe ser la dirección local.
+            \item Verificar direccionamiento: La dirección de destino debe ser la dirección local.
             \vspace{5px}
-            \item Verificar payload: El payload contiene un mensaje acordado por ambos grupos.
+            \item Verificar payload: El payload contiene un mensaje acordado por cada grupo.
             \vspace{5px}
             \end{itemize}
         \vspace{5px}
@@ -215,7 +215,7 @@
             \vspace{5px}
             \item La inicia el device de la PAN ID 1.
             \vspace{5px}   
-            \item La trama se envía al device del PAN ID 2.
+            \item La trama se envía al device de la PAN ID 2.
             \vspace{5px}
             \item La comunicación entre dispositivos de distintas PAN se hace a través de los coordinadores.
             \vspace{5px}
@@ -223,7 +223,7 @@
         \item Verificar el contenido de la trama recibida.
         \vspace{5px}
             \begin{itemize}
-            \item Verificar direccionamiento: La dirección de destino de la trama debe ser la dirección local.
+            \item Verificar direccionamiento: La dirección de destino debe ser la dirección local.
             \vspace{5px}
             \item Verificar payload: El payload contiene un mensaje acordado por ambos grupos.
             \vspace{5px}
@@ -231,7 +231,6 @@
         \vspace{5px}
     \end{itemize}   
 \end{frame}
-
 
 %-------------------------------------------------%
 %-------------------------------------------------%
@@ -272,7 +271,7 @@
 \hfill
     \begin{beamercolorbox}[center,dp=3ex,ht=10.25ex, wd=1\linewidth]{bgcolor}
         \Large\textbf{Protocolos de Comunicación en Sistemas Embebidos}\\
-        \huge\textbf{802.15.4 LR-WPAN}
+        \huge\textbf{Práctica 802.15.4 LR-WPAN}
     \end{beamercolorbox}
 \hfill\hfill
 \\
