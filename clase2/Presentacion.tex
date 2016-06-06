@@ -115,594 +115,121 @@
 %
 %
 
+%
 %-------------------------------------------------%
 %-------------------------------------------------%
-\section{Introducción}
-%-------------------------------------------------%
-%-------------------------------------------------%
-
-%-------------------------------------------------%
-\subsection[IEEE 802]{Grupo de trabajo IEEE 802}
-%-------------------------------------------------%
-
-
-\begin{frame}{Grupos de trabajo IEEE} 
-
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item IEEE 802: Desarrollar estándares para redes de área local y metropolitana (LAN y MAN)
-			\begin{itemize}
-				\item IEEE 802.3: Ethernet
-				\item IEEE 802.11: Wi-fi
-				\item ...
-			\end{itemize}
-			\vspace{10px}
-			\item IEEE 802.15: Redes inalámbricas de área personal (WPAN)
-			\vspace{5px}
-			\begin{itemize}
-				\item IEEE 802.15.1: Bluetooth
-				\item IEEE 802.15.3: WPANs de alta tasa de transferencia de datos (HR-WPAN)			
-				\item IEEE 802.15.4: WPANs de baja tasa de transferencia de datos (LR-WPAN)
-			\end{itemize}
-		\end{itemize}
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/OSI_Model_v1.pdf}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
-	
-\end{frame}
-
-%-------------------------------------------------%
-\subsection[IEEE 802.15.4]{IEEE 802.15.4 LR-WPAN}
-%-------------------------------------------------%
-
-\begin{frame}{IEEE 802.15.4}{LR-WPAN}
-	\begin{itemize}
-		\item Versiones: 802.15.4:2003, 802.15.4:2006 y \textbf{802.15.4:2011}
-		\vspace{5px}
-		\item Define:
-		\begin{itemize}
-			\item Nivel físico (PHY)
-			\item Control de acceso al medio (MAC)
-		\end{itemize}
-		\vspace{5px}
-		\item Características:
-		\begin{itemize}
-			\item Comunicaciones simples de bajo costo. 
-			\item Bajas tasas de transferencia (throughput).
-			\item Para aplicaciones con limitaciones de potencia.
-			\item Confiabilidad en la transferencia de datos.
-			\item Opera en una banda de frecuencia sin licencia.
-		\end{itemize}
-	\end{itemize}
-	
-\end{frame}
-
-\begin{frame}{IEEE 802.15.4}{Mercado}
-	\begin{itemize}
-		\item Uso doméstico e industrial.
-		\vspace{5px}
-		\item Dispositivos con fuente de alimentación autónoma.
-		\begin{itemize}
-			\item Batería.
-			\item Panel solar.
-		\end{itemize}
-		\vspace{5px}
-		\item Extremadamente bajo consumo de potencia (Ciclo de Trabajo).
-		\vspace{5px}
-		\item Principales áreas:
-		\begin{itemize}
-			\item Domótica y seguridad.
-			\item Productos electrónicos de consumo.
-			\item Cuidado de la salud.
-			\item Control y monitoreo de vehículos.
-			\item Agricultura.
-		\end{itemize}
-	\end{itemize}
-	
-\end{frame}
-
-\begin{frame}{IEEE 802.15.4}{Características Generales}
-	
-	\begin{itemize}
-		\item Área de operación: 10m
-		\vspace{5px}
-		\item Tasa de transferencia: 250kbs
-		\vspace{5px}
-		\item Adecuación a aplicaciones de tiempo real: \textit{Guaranteed Time Slots} (GTSs)
-		\vspace{5px}
-		\item Mecanismo para evitar colisiones:\\ \textit{Carrier Sense Multiple-Access / Collision Avoidance} (CSMA/CA)
-		\vspace{5px}
-		\item Control de consumo de energía: 
-		\begin{itemize}
-			\item \textit{Link Quality Indicator} (LQI)
-			\item \textit{Energy Detection} (ED)
-		\end{itemize}
-	\end{itemize}
-	
-\end{frame}
-
-
-%-------------------------------------------------%
-%-------------------------------------------------%
-\section{LR-WPAN}
+\section{Práctica de Laboratorio 802.15.4}
 %-------------------------------------------------%
 %-------------------------------------------------%
 
 %-------------------------------------------------%
-\subsection[Dispositivos]{Tipos de Dispositivos}
+\subsection[Estrella]{Topología Estrella}
 %-------------------------------------------------%
 
-\begin{frame}{Componentes}{Tipos de dispositivos}
-% El primer minipage es un marco para las otras dos, que parten la pantalla en dos horizontalmente.
-% Con 0.6\linewidth le indicás que porcentaje del ancho de la página debe tener la minipage
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.5\linewidth}
-		\begin{itemize}
-			\item Full-function device (FFD):\\ Capaz de ser PAN coordinator o coordinator. 
-			\vspace{10px}
-			\item Reduced-function device (RFD):\\ Sólo puede comunicarse con un FFD. Requerimientos mínimos de recursos.
-			%\vspace{10px}
-	  	\end{itemize}	
-	\end{minipage}	
-	\begin{minipage}[c]{0.5\linewidth}
-		\begin{figure}
-			\begin{align*} 
-				{\includegraphics[width=.3\textwidth]{./imagenes/FFD}}
-				\hspace{15px} 
-				{\includegraphics[width=.35\textwidth]{./imagenes/RFD}}
-				\end{align*}\\
-				\vspace{15px}
-				{\includegraphics[width=.6\textwidth]{./imagenes/FFDvsRFD}}
-			
-		\end{figure}	  	  	  	
-	\end{minipage}	
-\end{minipage}
-\end{frame}
-
-%-------------------------------------------------%
-\subsection[Topología]{Topología de la red}
-%-------------------------------------------------%
-
-\begin{frame}{Topología de la Red}{Estrella o punto a punto}
-
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.45\linewidth}
-		\begin{itemize}
-			\item Estrella (Star)
-			\begin{itemize}
-				\item PAN coordinator.
-				\item Comunicaciones centralizadas.
-				\item Ej: Automatización del hogar, Periféricos de PC, Juegos,...
-					\end{itemize}
-			\vspace{10px}
-			\item Punto a punto (Peer-to-Peer)
-			\begin{itemize}
-				\item PAN coorditator.
-				\item Permite redes más complejas.
-				\item Multi-Hop routing.
-				\item Ej: Control industrial,  WSNs, Tracking de inventario,...
-			\end{itemize}
-	  	\end{itemize}	
-	\end{minipage}
-	\hspace{-20px}
-	\begin{minipage}[c]{0.7\linewidth}
-		\begin{figure}[H]
-			{\includegraphics[width=.7\textwidth]{./imagenes/Topology}}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
-\end{frame}
-
-\begin{frame}{Topología Punto a punto}{Árbol de Cluster}
-\begin{minipage}[c]{1.0\linewidth}
-\begin{minipage}[c]{0.45\linewidth}
-		\begin{itemize}
-			\item Mayoría de FFDs.
-			\vspace{10px}
-			\item 1 \textit{overall PAN coordinator}.
-			\vspace{10px}
-			\item RFDs al final de una rama.
-			\vspace{10px}
-			\item Aumenta el área de covertura.
-			\vspace{10px}
-			\item Aumenta la latencia de la red.
-		\end{itemize}	
-	\end{minipage}
-	\hspace{-15px}
-	\begin{minipage}[c]{0.65\linewidth}
-		\begin{figure}[H]
-			{\includegraphics[width=.8\textwidth]{./imagenes/cluster}}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
-\end{frame}
-
-%-------------------------------------------------%
-\subsection[Arquitectura]{Arquitectura del estándar}
-%-------------------------------------------------%
-
-\begin{frame}{Arquitectura del estándar}
-
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item MAC Sublayer
-			\begin{itemize}
-				\item Beacon management
-				\item Channel access
-				\item GTSs management
-				\item Frame validation, ACKs
-				\item Asociación y desasociación de dispositivos
-			\end{itemize}
-			\vspace{10px}
-			\item Physical Layer (PHY):
-			\begin{itemize}
-				\item Activación/Desactivación de RF
-				\item ED, LQI, Clear Channel Assessment (CCA)
-				\item Channel selection
-				\item Tx y Rx de paquetes a través del medio físico
-			\end{itemize}
-			\vspace{10px}
-		\end{itemize}	
-	  \end{minipage}
-	  \begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			{\includegraphics[width=.6\textwidth]{./imagenes/arquitectura}}
-		\end{figure}	  	  	
-	  \end{minipage}
-\end{minipage}
-
-\end{frame}
-
-
-\begin{frame}[t]{MAC: Beacons, Supertramas y GTSs}
-\begin{minipage}[c]{1.0\linewidth}
-\begin{minipage}[c]{0.35\linewidth}
-		\begin{itemize}
-			\item 16 time slots.
-			\vspace{5px}
-			\item Contention Access Period (CAP)\\ \textbf{con CSMA/CA}.
-			\vspace{5px}
-			\item Contention Free Period (CFP) para los GTSs, \textbf{sin CSMA/CA}.
-			\vspace{5px}
-			\item Los GTSs son opcionales y reducen el CAP.
-			\vspace{5px}
-			\item Tiempo inactivo $\rightarrow$ modo bajo consumo.
-		\end{itemize}	
-	\end{minipage}
-%	\hspace{-5px}
-	\begin{minipage}[c]{0.65\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\linewidth]{./imagenes/superFrame}\\
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
-%\vspace{10px}
-%	\begin{figure}[H]
-%		\includegraphics[height=.35\textheight]{./imagenes/superFrame}\\
-%	\end{figure}
-
-\end{frame}
-
-%--------------------------------------------------------------------%
-\subsection[Transferencia de datos]{Modelo de Transferencia de datos}
-%--------------------------------------------------------------------%
-
-
-\begin{frame}[t]{Transferencia de Datos}
-\textbf{Con beacon}
+\begin{frame}[t]{Ejercicio 1: Topología Estrella}
 %\vspace{10px}
 \begin{columns}[t]
-	\begin{column}{.5\textwidth}
-		\begin{minipage}[t][0.7\textheight][s]{\columnwidth}
-			\begin{figure}[H]
-				\includegraphics[height=.65\textheight]{./imagenes/dev-coord-beacon.jpg}
-				\vfill
-				\vspace{10px}
-				\caption{Device $\rightarrow$ Coordinator}
-			\end{figure}
-		\end{minipage}
-	\end{column}
-	\begin{column}{.5\textwidth}
-		\begin{minipage}[t][0.7\textheight][s]{\columnwidth}
-			\begin{figure}[H]
-				\includegraphics[height=.7\textheight]{./imagenes/coord-dev-beacon.jpg}
-				\vfill
-				\caption{Coordinator $\rightarrow$ Device}
-			\end{figure}	 		
-		\end{minipage}
-	\end{column}
-\end{columns}
+    \begin{column}{.5\textwidth}
+        \begin{minipage}[t][0.7\textheight][s]{\columnwidth}
+            \begin{itemize}
+            \item Disponer una topología de tipo Estrella:
+            \begin{itemize}
+                \item Un Mote como coordinador.
+                \item El resto como device.
+            \end{itemize}
+            \vspace{5px}
+            \item Transferencia de datos:
+            %\vspace{5px}
+            \begin{itemize}
+                \item Todas las tramas son de tipo Data.
+                \item La inicia el device: Data request.
+                \item Se debe enviar acuse de recibo por cada trama recibida.
+                \item El coordinador envía una trama al device que lo solicite. El payload contiene el mensaje: "hola deviceN". Con N la respectiva dirección remota.
+            \end{itemize}
+        \end{itemize}
+        \end{minipage}
+    \end{column}
+    \begin{column}{.5\textwidth}
+        \begin{minipage}[t][0.7\textheight][s]{\columnwidth}
+            \begin{figure}[H]
+                \includegraphics[height=.5\textheight]{./imagenes/coord-dev-sinbeacon.jpg}
+                \vfill
+                \caption{Coordinator $\rightarrow$ Device}
+            \end{figure}            
+        \end{minipage}
+    \end{column}
+\end{columns}          
 \end{frame}
-
-\begin{frame}[t]{Transferencia de Datos}
-\textbf{Sin beacon}
-%\vspace{10px}
-\begin{columns}[t]
-	\begin{column}{.5\textwidth}
-		\begin{minipage}[t][0.7\textheight][s]{\columnwidth}
-			\begin{figure}[H]
-				\includegraphics[height=.45\textheight]{./imagenes/dev-coord-sinbeacon.jpg}
-				\vfill
-				\vspace{10px}
-				\caption{Device $\rightarrow$ Coordinator}
-			\end{figure}
-		\end{minipage}
-	\end{column}
-	\begin{column}{.5\textwidth}
-		\begin{minipage}[t][0.7\textheight][s]{\columnwidth}
-			\begin{figure}[H]
-				\includegraphics[height=.5\textheight]{./imagenes/coord-dev-sinbeacon.jpg}
-				\vfill
-				\caption{Coordinator $\rightarrow$ Device}
-			\end{figure}	 		
-		\end{minipage}
-	\end{column}
-\end{columns} 	  	
-\end{frame}
-
-
-%--------------------------------------------------------------------%
-\subsection[CSMA/CA]{CSMA/CA}
-%--------------------------------------------------------------------%
-
-\begin{frame}[T]{Carrier Sense multiple Access with Collision Avoidance}
-
-Slotted CSMA/CA vs Unslotted CSMA/CA
-
-\vspace{10px}
-
-		\begin{figure}[H]
-			\includegraphics[height=.8\textheight]{./imagenes/CSMA-CA}\\
-%			\vspace{15px}
-%			\includegraphics[height=.3\textheight]{./imagenes/unsolotted.jpg}
-		\end{figure}
-\end{frame}
-
-
-%--------------------------------------------------------------------%
-\subsection[Tramas]{Estructura de las Tramas}
-%--------------------------------------------------------------------%
-
-\begin{frame}{Estructura de las Tramas}
-Se definen 4 tipos de trama MAC:
-\vspace{5px}
-	\begin{itemize}
-		\item Beacon
-		\vspace{5px}
-		\item Data
-		\vspace{5px}
-		\item Acknowledgement
-		\vspace{5px}
-		\item MAC Command
-		\vspace{5px}
-	\end{itemize}
-	\begin{figure}[H]
-		\includegraphics[width=.8\textwidth]{./imagenes/frameStructure}
-	\end{figure}	 	
-\end{frame}
-
-\begin{frame}[t]{Tramas}
-Tipo de Frame: \textbf{Beacon}
-\vspace{10px}
-	\begin{figure}[H]
-		\includegraphics[width=1\textwidth]{./imagenes/beacon.jpg}
-	\end{figure}	  	  	
-\end{frame}
-
-\begin{frame}[t]{Tramas}
-Tipo de Frame: \textbf{Data}
-\vspace{10px}
-	\begin{figure}[H]
-		\includegraphics[width=1\textwidth]{./imagenes/data.jpg}
-	\end{figure}	  	  	
-\end{frame}
-
-
-\begin{frame}[t]{Tramas}
-Tipo de Frame: \textbf{Acknowledgement} (Ack)
-\vspace{10px}
-	\begin{figure}[H]
-	\centering
-		\includegraphics[width=.7\textwidth]{./imagenes/ack.jpg}
-	\end{figure}	  	  	
-\end{frame}
-
-\begin{frame}[t]{Tramas}
-Tipo de Frame: \textbf{MAC Command}
-\vspace{10px}
-	\begin{figure}[H]
-		\includegraphics[width=1\textwidth]{./imagenes/maccommand.jpg}
-	\end{figure}	  	  	
-\end{frame}
-
-
-\begin{frame}[t]{Tramas}
-Frame Control Field
-	\begin{figure}[H]
-	\centering
-		\includegraphics[height=.3\textheight]{./imagenes/FCF.jpg}\\
-		\vspace{20px}
-		\includegraphics[height=.3\textheight]{./imagenes/frametype.jpg}
-		\hspace{20px} 
-		\includegraphics[height=.3\textheight]{./imagenes/addressingmode.jpg}
-	\end{figure} 	
-\end{frame}
-
-
-%--------------------------------------------------------------------%
-\subsection[Modulación]{Modulación}
-%--------------------------------------------------------------------%
-
-\begin{frame}{Modulación}
-\begin{minipage}[c]{1.0\linewidth}
-\begin{figure}[H]
-	\includegraphics[height=1\textheight]{./imagenes/modulaciones.jpg}
-		\end{figure}	
-\end{minipage}
-\end{frame}
-
-%-------------------------------------------------%
-%-------------------------------------------------%
-\section{Mote LSE}
-%-------------------------------------------------%
-%-------------------------------------------------%
-
-%-------------------------------------------------%
-\subsection[Mote]{Mote}
-%-------------------------------------------------%
-\begin{frame}{Nodo Mote LSE-FIUBA} 
-
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
-		\begin{itemize}
-			\item Nodo Mote desarrollado en el LSE-FIUBA
-			\vspace{15px}
-			\begin{itemize}
-				\item LPC1343 ARM Cortex-M3 @72MHz
-				\vspace{5px}
-				\item Transceptor TI-2520
-				\vspace{5px}
-				\item Extensor de rango TI-2591
-				\vspace{5px}
-				\item 3 Pulsadores
-				\vspace{5px}
-				\item 3 leds
-				\vspace{5px}
-				\item Antena y balun en microstrip
-			\end{itemize}
-			\vspace{10px}
-		\end{itemize}
-	\end{minipage}
-	\begin{minipage}[c]{0.35\linewidth}
-		\begin{figure}[H]
-			\vspace{35px}
-			\includegraphics[width=1\textwidth]{./imagenes/mote.jpg}
-			\\
-			\vspace{10px}
-			\includegraphics[width=1\textwidth]{./imagenes/motePCB}
-			\label{Mote LSE}
-			%\caption{Mote LSE}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
-\end{frame}
-
-
-\begin{frame}{Nodo Mote LSE-FIUBA}{Circuito Esquemático}
-	\begin{figure}[H]
-		\includegraphics[height=.95\textheight]{./imagenes/moteSchema}
-	\end{figure}	  	  	
-\end{frame}
-
 
 
 %-------------------------------------------------%
-\subsection[TI CC2520]{TI CC2520}
+\subsection[Peer-to-Peer]{Topología Peer-to-Peer}
 %-------------------------------------------------%
-\begin{frame}{Transceptor DSSS TI CC2520} 
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.7\linewidth}
-		\begin{itemize}
-			\vspace{5px}
-			\item 2394-2507 MHz	
-%			\item VCO, LNA, PA y filtros On-chip	
-%			\item 3 modos de potencia flexibles para consumo reducido
-			\vspace{10px}
-			\item Muy bajo consumo de corriente
-			\begin{itemize}
-				\item RX: 18.5 - 22.3 mA.
-				\item TX: 25.8 - 33.6 mA.
-			\end{itemize}
-			\vspace{10px}
-			\item Interfaz de usuario
-			\begin{itemize}
-				\item SPI
-				\item 6 GPIOs
-% 				\item Generador de interupciones
-				\item Respuestas automáticas a diferentes eventos
-				\item Modo de Packet Sniffer embebido
-			\end{itemize}
-			\vspace{10px}
-		\end{itemize}
-	\end{minipage}
-	\begin{minipage}[c]{0.25\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/cc2520.jpg}
-			\label{cc2520}
-			%\caption{cc2520}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+\begin{frame}[t]{Ejercicio 2: Topología Peer-to-Peer}{Comunicación sencilla}
+    \begin{itemize}
+        \item Agruparse en 2 grupos de 2 Mote cada uno.
+        \vspace{5px}
+        \item Los grupos se llamarán: PAN ID 1 y PAN ID 2.
+        \vspace{5px}
+        \item Cada PAN esta formada por: 1 coordinador y 1 device.
+        \vspace{5px}
+        \item Transferencia de datos:
+            \begin{itemize}
+            \item Sin beacon.
+            \vspace{5px}
+            \item La inicia el device.
+            \vspace{5px}   
+            \item Encender un led al transmitir y otro al recibir una trama.
+            \vspace{5px}
+            \end{itemize}
+        \item La recepción de una trama es bloqueante.
+        \vspace{5px}
+    \end{itemize}
 \end{frame}
 
-
-\begin{frame}{Soporte por Hardware a 802.15.4 MAC} 
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.70\linewidth}
-		\begin{itemize}
-			\vspace{5px}
-			\item Generador automático de preámbulo	
-			\vspace{5px}
-			\item Inserción y detección de palabra de sincronización	
-			\vspace{5px}
-			\item CRC-16 en el MAC payload
-			\vspace{5px}
-			\item Frame Filtering
-			\vspace{5px}
-			\item Ack automático
-			\vspace{5px}
-			\item Clear Channel Assessment (CCA)
-			\vspace{5px}
-			\item Energy Detection (ED)
-			\vspace{5px}
-			\item Link Quality Indication (LQI)
-%			\vspace{5px}
-%			\item Seguridad MAC automática (CTR, CBC-MAC,CCM)
-		\end{itemize}
-	\end{minipage}
-	\begin{minipage}[c]{0.25\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/cc2520.jpg}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+%-------------------------------------------------%
+\subsection[P2P+Verificar]{P2P + Verificar trama}
+%-------------------------------------------------%
+\begin{frame}[t]{Ejercicio 3: P2P + Verificación de trama}{Comunicación sencilla con verificación de trama}
+    \begin{itemize}
+        \item Verificar el contenido de la trama recibida.
+        \vspace{5px}
+            \begin{itemize}
+            \item Verificar direccionamiento: La dirección de destino de la trama debe ser la dirección local.
+            \vspace{5px}
+            \item Verificar payload: El payload contiene un mensaje acordado por ambos grupos.
+            \vspace{5px}
+            \end{itemize}
+        \vspace{5px}
+    \end{itemize}   
 \end{frame}
 
-\begin{frame}{Circuito de Aplicación Típico}	
-	\begin{figure}[H]
-		\includegraphics[height=1\textheight]{./imagenes/applicationcircuit.jpg}
-	\end{figure}	
-\end{frame}
-
-\begin{frame}{Diagrama Funcional}
-	\begin{figure}[H]
-		\includegraphics[height=1\textheight]{./imagenes/diagrama.jpg}
-	\end{figure}	
-\end{frame}
-
-\begin{frame}{Procesamiento de tramas: Tx}
-	\begin{figure}[H]
-		\includegraphics[height=.95\textheight]{./imagenes/txfifo.jpg}
-	\end{figure}	
-\end{frame}
-
-\begin{frame}{Procesamiento de tramas: Rx filtering}
-	\begin{figure}[H]
-		\includegraphics[height=.95\textheight]{./imagenes/filtering.jpg}
-	\end{figure}	
-\end{frame}
-
-
-\begin{frame}{Procesamiento de tramas: Rx matching}
-	\begin{figure}[H]
-		\includegraphics[height=.95\textheight]{./imagenes/matching.jpg}
-	\end{figure}	
+%-------------------------------------------------%
+\subsection[Inter PAN]{Inter PAN}
+%-------------------------------------------------%
+\begin{frame}[t]{Ejercicio 4: Inter PAN}{Comunicación entre dispositivos de distintas PAN}
+    \begin{itemize}
+        \item Transferencia de datos:
+            \begin{itemize}
+            \item Sin beacon.
+            \vspace{5px}
+            \item La inicia el device de la PAN ID 1.
+            \vspace{5px}   
+            \item La trama se envía al device del PAN ID 2.
+            \vspace{5px}
+            \item La comunicación entre dispositivos de distintas PAN se hace a través de los coordinadores.
+            \vspace{5px}
+            \end{itemize}
+        \item Verificar el contenido de la trama recibida.
+        \vspace{5px}
+            \begin{itemize}
+            \item Verificar direccionamiento: La dirección de destino de la trama debe ser la dirección local.
+            \vspace{5px}
+            \item Verificar payload: El payload contiene un mensaje acordado por ambos grupos.
+            \vspace{5px}
+            \end{itemize}
+        \vspace{5px}
+    \end{itemize}   
 \end{frame}
 
 
@@ -762,7 +289,7 @@ Frame Control Field
 \end{figure}	
 
 \vspace{5px}
-\tiny versión: 2016-06-01 rev 1.0 
+\tiny versión: 2016-06-06 rev 1.0 
  	  	
 \end{center}
 \end{frame}
