@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169, handout]{beamer}
+\documentclass[aspectratio=169]{beamer}
 %la opcion hangout es para complilar en modo imprimible
 %\documentclass[hangout]{beamer}
 
@@ -83,7 +83,7 @@
 \hfill
     \begin{beamercolorbox}[center,dp=3ex,ht=10.25ex, wd=1\linewidth]{bgcolor}
         \Large\textbf{Protocolos de Comunicación en Sistemas Embebidos}\\
-        \huge\textbf{Práctica 802.15.4 LR-WPAN}
+        \huge\textbf{802.15.4 LR-WPAN - Práctica}
     \end{beamercolorbox}
 \hfill\hfill
 \\
@@ -99,7 +99,7 @@
 	\includegraphics[width=.3\textwidth]{./imagenes/red.jpg}
 \end{figure}	  	  	
 \vspace{5px}
-\tiny versión: 2016-06-06 rev 1.0 
+\tiny versión: 2016-06-08 rev 1.0 
 
 \end{center}
 \end{frame}
@@ -117,20 +117,126 @@
 %-------------------------------------------------%
 \section[Herramientas]{Herramientas}
 %-------------------------------------------------%
-\begin{frame}[c]{Herramientas}
-%\vspace{10px}
-    \begin{itemize}
 
+\subsection{Toolchain}
+
+\begin{frame}[t]{Herramientas}
+\vspace{10px}
+    \begin{itemize}
         \item Toolchain: LPCxpresso
+        \vspace{20px}
             \begin{itemize}
             \item IDE basado en eclipse + compiler y linker GNU + GDB debugger.
             \vspace{10px}
             \item LPC-Link: Herramienta que incluye un programador y debugger.
             \vspace{10px}   
             \end{itemize}
+        \vspace{20px}
         \item Target: LPC1343 ARM Cortex-M3 (Mote LSE).
-        \vspace{10px}
-    \end{itemize}
+	\end{itemize}
+\end{frame}
+
+\subsection{Microstack}
+
+
+
+\begin{frame}[t]{Microstack 802.15.4}
+
+\textbf{Orden de abstracción de los módulos}
+\vspace{10px}
+	\begin{itemize}
+	\item cc2520
+		\begin{itemize}
+			\item cc2520-task.c
+			\item cc2520-mac.c
+			\item cc2520.c
+		\end{itemize}	
+	\vspace{10px}
+	\item HAL
+		\begin{itemize}
+			\item ssp.c
+			\item ledpul.c
+		\end{itemize}
+	\vspace{10px}
+	\item Hardware
+		\begin{itemize}
+			\item CMSISv2p00{\_}LPC13xx
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Estructura de directorios}
+\vspace{-10px}
+	\begin{figure}[H]
+		\includegraphics[height=\textheight]{./imagenes/ProjectExplorer}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[t]{Referencias}{Capa Física PHY}
+	\begin{itemize}
+		\item cc2520.c
+		\vspace{10px}
+		\begin{itemize}
+			\item \textbf{ccInit()} Inicializa el transceiver con la dirección local. Indica si resuelve ACK automático por hardware.
+			\vspace{5px}
+			\item \textbf{ccConfig()} Carga los registros del transceiver con los valores recomendados en la hoja de datos.
+			\vspace{5px}
+			\item \textbf{ccCmd()} Envía comandos al transceiver y procesa la respuesta.
+			\vspace{5px}
+			\item \textbf{ccRegRd()} y \textbf{ccRegWr()} Leer y escribir los registros/memoria del transceiver.
+		\end{itemize}
+		\vspace{10px}
+		\item cc2520.h
+		\vspace{10px}
+		\begin{itemize}
+			\item Definición de \textbf{Excepciones}.  \textbf{esto todavía no me gusta. mañana lo cambio}
+			\vspace{5px}
+			\item Definición de \textbf{Comandos}.
+		\end{itemize}	
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}[t]{Referencias}{Capa de Acceso al medio MAC}
+	\begin{itemize}
+		\item cc2520-mac.c
+		\vspace{5px}
+		\begin{itemize}
+			\item struct \textbf{frameData} Tipo de dato para enviar y recibir frames. Contiene el FCF (Frame Control Field), el número de secuencia, direcciones y modo de direccionamiento.
+			\vspace{5px}
+			\item \textbf{ccWarpperFCF()} Arma el FCF en función del tipo de frame y la longitud de direccionamiento short o extended (16 ó 64 bits) principalmente.
+			\vspace{5px}
+			\item \textbf{ccFrameTx()} Carga un frame en el buffer del transceiver pero no lo transmite.
+			\vspace{5px}
+			\item \textbf{ccTx()} Implementa CSMA/CA y transmite la trama contenida en el buffer del transceiver si la hubiera.
+			\vspace{5px}
+			\item \textbf{ccFrameRx()} Verifica si se recibió una trama en cuyo caso la carga en la estructura pasada como argumento.
+		\end{itemize}
+		\vspace{10px}
+		\item \textbf{ccFrameForming()} Arma una trama hacia el destino  y con el payload indicados como parámetros. Carga la trama en el buffer del transceiver.
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}[t]{Tramas}
+Frame Control Field
+	\begin{figure}[H]
+	\centering
+		\includegraphics[height=.3\textheight]{./imagenes/FCF.jpg}\\
+		\vspace{20px}
+		\hspace{-10px}
+		\includegraphics[height=.37\textheight]{./imagenes/frametype.jpg}
+%		\hspace{2px} 
+		\includegraphics[height=.37\textheight]{./imagenes/addressingmode.jpg}
+	\end{figure} 	
+\end{frame}
+
+\begin{frame}[t]{Tramas}
+Tipo de Frame: \textbf{Data}
+\vspace{10px}
+	\begin{figure}[H]
+		\includegraphics[width=1\textwidth]{./imagenes/data.jpg}
+	\end{figure}	  	  	
 \end{frame}
 
 %
@@ -144,28 +250,53 @@
 \subsection[Estrella]{Topología Estrella}
 %-------------------------------------------------%
 
-\begin{frame}[t]{Ejercicio 1: Topología Estrella}
+\begin{frame}[t]{Ejercicio 1: Topología Estrella}{Ejemplo}
 %\vspace{10px}
 \begin{columns}[t]
     \begin{column}{.5\textwidth}
         \begin{minipage}[t][0.7\textheight][s]{\columnwidth}
+        Características del ejemplo:
+        \vspace{30px}
             \begin{itemize}
-            \item Se dispone de una topología de tipo Estrella:
-            \begin{itemize}
-                \item Un Mote como coordinador.
-                \item El resto como device.
-            \end{itemize}
-            \vspace{5px}
-            \item Transferencia de datos:
-            %\vspace{5px}
-            \begin{itemize}
-                \item Todas las tramas son de tipo Data.
-                \item La inicia el device: Data request.
-                \item Se debe enviar acuse de recibo por cada trama recibida.
-                \item El coordinador envía una trama al device que lo solicite. El payload contiene el mensaje: "hola deviceN". Con N la respectiva dirección remota.
-            \end{itemize}
-        \end{itemize}
+	            \item Topología de tipo Estrella
+	            \vspace{5px}
+				\item Un coordinador
+				\vspace{5px}            
+	            \item Sin beacon
+				\vspace{5px}
+	            \item Tramas tipo \texttt{data} únicamente
+	            \vspace{5px}
+        		\end{itemize}
         \end{minipage}
+    \end{column}
+    \begin{column}{.5\textwidth}
+        \begin{minipage}[t][0.7\textheight][s]{\columnwidth}
+            \begin{figure}[H]
+                \includegraphics[width=.6\textwidth]{./imagenes/Topology-Star}
+            \end{figure}            
+        \end{minipage}
+    \end{column}
+\end{columns}          
+\end{frame}
+
+\begin{frame}[t]{Ejercicio 1: Topología Estrella}{Ejemplo}
+%\vspace{10px}
+\begin{columns}[t]
+    \begin{column}{.5\textwidth}
+        \begin{minipage}[t][0.7\textheight][s]{\columnwidth}
+        Características de las comunicaciones:
+        \vspace{10px}
+		\begin{itemize}
+			\item Inicia el device con mensaje: 
+			``\textit{dataRequest from device N}''.
+			\vspace{5px}			
+			\item El coordinador responde: ``\textit{ACK}''
+			\vspace{5px}
+			\item El coordinador envía al device que originó a la comunicación: ``\textit{hola device N}''
+			\vspace{5px}
+			\item El device responde:\\``\textit{ack from device N}''
+            \end{itemize}        
+            \end{minipage}
     \end{column}
     \begin{column}{.5\textwidth}
         \begin{minipage}[t][0.7\textheight][s]{\columnwidth}
@@ -178,6 +309,7 @@
     \end{column}
 \end{columns}          
 \end{frame}
+
 
 
 %-------------------------------------------------%
@@ -289,7 +421,7 @@
 \hfill
     \begin{beamercolorbox}[center,dp=3ex,ht=10.25ex, wd=1\linewidth]{bgcolor}
         \Large\textbf{Protocolos de Comunicación en Sistemas Embebidos}\\
-        \huge\textbf{Práctica 802.15.4 LR-WPAN}
+        \huge\textbf{802.15.4 LR-WPAN - Práctica}
     \end{beamercolorbox}
 \hfill\hfill
 \\
@@ -306,7 +438,7 @@
 \end{figure}	
 
 \vspace{5px}
-\tiny versión: 2016-06-06 rev 1.0 
+\tiny versión: 2016-06-08 rev 1.0 
  	  	
 \end{center}
 \end{frame}
