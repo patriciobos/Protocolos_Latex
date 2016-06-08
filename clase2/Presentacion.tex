@@ -1,6 +1,6 @@
-\documentclass[aspectratio=169]{beamer}
-%la opcion hangout es para complilar en modo imprimible
-%\documentclass[hangout]{beamer}
+\documentclass[aspectratio=169,handout]{beamer}
+%la opcion handout es para complilar en modo imprimible
+%\documentclass[handout]{beamer}
 
 \mode<presentation>
 {
@@ -120,7 +120,7 @@
 
 \subsection{Toolchain}
 
-\begin{frame}[t]{Herramientas}
+\begin{frame}[t]{Toolchain y Plataforma}
 \vspace{10px}
     \begin{itemize}
         \item Toolchain: LPCxpresso
@@ -166,7 +166,7 @@
 \end{frame}
 
 \begin{frame}[t]{Estructura de directorios}
-\vspace{-10px}
+\vspace{-15px}
 	\begin{figure}[H]
 		\includegraphics[height=\textheight]{./imagenes/ProjectExplorer}
 	\end{figure}
@@ -189,9 +189,9 @@
 		\item cc2520.h
 		\vspace{10px}
 		\begin{itemize}
-			\item Definición de \textbf{Excepciones}.  \textbf{esto todavía no me gusta. mañana lo cambio}
+			\item Definición de palabras reservadas para el manejo de \textbf{Excepciones}.  
 			\vspace{5px}
-			\item Definición de \textbf{Comandos}.
+			\item Definición de palabras reservadas para el manejo de \textbf{Comandos}.
 		\end{itemize}	
 	\end{itemize}
 
@@ -317,22 +317,24 @@ Tipo de Frame: \textbf{Data}
 %-------------------------------------------------%
 \begin{frame}[t]{Ejercicio 2: Topología Peer-to-Peer}{Comunicación sencilla}
     \begin{itemize}
-        \item Agruparse en 2 grupos de 2 Mote cada uno.
+        \item Dividirse en grupos con una placa cada grupo.
         \vspace{5px}
-        \item Los grupos se llamarán: PAN ID 1 y PAN ID 2.
+        \item Agruparse en 2 PANs: PAN ID 1 y PAN ID 2.
         \vspace{5px}
-        \item Cada PAN esta formada por: 1 coordinador y 1 device.
+        \item Cada PAN esta formada por: 1 coordinador y N devices.
         \vspace{5px}
         \item Transferencia de datos:
             \begin{itemize}
             \item Sin beacon.
             \vspace{5px}
-            \item La inicia el device.
+            \item Utilizar un contador junto con el SysTick{\_}Handler para iniciar periódicamente la comunicación entre nodos. 
             \vspace{5px}   
-            \item Encender un led al transmitir y otro al recibir una trama.
+            \item Destellar el led 0 al transmitir una trama.
             \vspace{5px}
+            \item Destellar el led 1 al recibir una trama.
             \end{itemize}
-        \item La recepción de una trama es bloqueante.
+		\vspace{5px}
+        \item Familiarizarse con las funciones del microstack
         \vspace{5px}
     \end{itemize}
 \end{frame}
@@ -342,13 +344,41 @@ Tipo de Frame: \textbf{Data}
 %-------------------------------------------------%
 \begin{frame}[t]{Ejercicio 3: P2P + Verificación de trama}{Comunicación sencilla con verificación de trama}
     \begin{itemize}
-        \item Partiendo de la comunicación establecida en el Ejercicio 2, verificar el contenido de la trama recibida:
-        \vspace{5px}
+        \item Partiendo de la comunicación establecida en el Ejercicio 2,\\ \textbf{Verificar el contenido de la trama recibida}:
+        \vspace{10px}
             \begin{itemize}
-            \item Verificar direccionamiento: La dirección de destino debe ser la dirección local.
+            \item Destellar el led 0 al transmitir una trama
             \vspace{5px}
-            \item Verificar payload: El payload contiene un mensaje acordado por cada grupo.
+            \item Verificar direccionamiento: La dirección de destino debe ser la dirección local del device.
             \vspace{5px}
+            \item Si el direccionamiento es correcto destellar el led 1.
+			\vspace{5px}
+            \item Verificar payload: El payload debe contener un mensaje acordado dentro de la PAN.
+            \vspace{5px}
+			\item Si el mensaje es correcto destellar el led 2. 
+            \end{itemize}
+        \vspace{5px}
+    \end{itemize}   
+\end{frame}
+
+
+%-------------------------------------------------%
+\subsection[P2P+ACK]{P2P + ACK}
+%-------------------------------------------------%
+\begin{frame}[t]{Ejercicio 4: P2P + ACK}{Comunicación sencilla con verificación y ACK}
+    \begin{itemize}
+        \item Partiendo de la comunicación establecida en el Ejercicio 3,\\ \textbf{Enviar una respuesta al mensaje recibido}:
+        \vspace{10px}
+            \begin{itemize}
+            \item Destellar el led 0 al transmitir una trama
+            \vspace{5px}
+            \item Verificar direccionamiento y payload: idem ejercicio 3.
+            \vspace{5px}
+            \item Si el direccionamiento y el payload es correcto destellar el led 1.
+			\vspace{5px}
+            \item Enviar una trama de confirmación con un mensaje acordado intra PAN.
+            \vspace{5px}
+			\item Si el mensaje es correcto destellar el led 2. 
             \end{itemize}
         \vspace{5px}
     \end{itemize}   
@@ -357,25 +387,26 @@ Tipo de Frame: \textbf{Data}
 %-------------------------------------------------%
 \subsection[Inter PAN]{Inter PAN}
 %-------------------------------------------------%
-\begin{frame}[t]{Ejercicio 4: Inter PAN}{Comunicación entre dispositivos de distintas PAN}
+\begin{frame}[t]{Ejercicio 5: Inter PAN}{Comunicación entre dispositivos de distintas PAN}
     \begin{itemize}
         \item Transferencia de datos:
+        \vspace{5px}
             \begin{itemize}
             \item Sin beacon.
             \vspace{5px}
-            \item La inicia el device de la PAN ID 1.
+            \item Inicia el device de la PAN ID 1 con un mensaje acordado entre los 4 grupos.
             \vspace{5px}   
-            \item La trama se envía al device de la PAN ID 2.
+            \item El device que inicia debe fijar el ciclo de trabajo utilizando un contador y el SysTick{\_}Handler.
             \vspace{5px}
             \item La comunicación entre dispositivos de distintas PAN se hace a través de los coordinadores.
-            \vspace{5px}
+	        \vspace{10px}            
             \end{itemize}
         \item Verificar el contenido de la trama recibida.
-        \vspace{5px}
+			\vspace{5px}
             \begin{itemize}
             \item Verificar direccionamiento: La dirección de destino debe ser la dirección local.
             \vspace{5px}
-            \item Verificar payload: El payload contiene un mensaje acordado por ambos grupos.
+            \item Verificar payload: El payload contiene un mensaje acordado por los grupos.
             \vspace{5px}
             \end{itemize}
         \vspace{5px}
